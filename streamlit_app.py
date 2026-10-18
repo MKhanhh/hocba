@@ -1,11 +1,12 @@
 """HỌC BÁ – file khởi động.
 
 Toàn bộ app (code + 19 đề + từ vựng + bài học) nằm gọn trong hocba_app.zip.
-File này tự giải nén zip (chỉ lần đầu, hoặc khi zip được thay bản mới) rồi chạy app.
-Nhờ vậy khi đưa lên GitHub chỉ cần tải vài file, không phải tạo từng thư mục.
+Nếu có thêm hocba_patch.zip (bản sửa nhỏ) thì các file trong đó được chép ĐÈ lên bản gốc.
+File này tự giải nén (chỉ lần đầu, hoặc khi một trong hai zip được thay bản mới) rồi chạy app.
 """
 import hashlib
 import runpy
+import shutil
 import sys
 import tempfile
 import zipfile
@@ -13,6 +14,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 BUNDLE = HERE / "hocba_app.zip"
+PATCH = HERE / "hocba_patch.zip"      # không bắt buộc
 
 
 def _target() -> Path:
@@ -29,11 +31,23 @@ def _target() -> Path:
 
 def _prepare() -> Path:
     d = _target()
-    digest = hashlib.sha256(BUNDLE.read_bytes()).hexdigest()[:16]
+    h = hashlib.sha256(BUNDLE.read_bytes())
+    if PATCH.exists():
+        h.update(PATCH.read_bytes())
+    digest = h.hexdigest()[:16]
     mark = d / ".bundle"
     if not mark.exists() or mark.read_text() != digest:
+        for name in ("hb", "data", "app_main.py"):      # xóa bản cũ (KHÔNG đụng file tiến độ)
+            p = d / name
+            if p.is_dir():
+                shutil.rmtree(p, ignore_errors=True)
+            elif p.exists():
+                p.unlink()
         with zipfile.ZipFile(BUNDLE) as z:
             z.extractall(d)
+        if PATCH.exists():
+            with zipfile.ZipFile(PATCH) as z:
+                z.extractall(d)
         mark.write_text(digest)
     return d
 
