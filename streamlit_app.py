@@ -49,6 +49,16 @@ def _prepare() -> Path:
             with zipfile.ZipFile(PATCH) as z:
                 z.extractall(d)
         mark.write_text(digest)
+    if getattr(sys, "_hocba_digest", None) != digest:     # có bản mới: nạp lại code + xóa bộ nhớ đệm, khỏi cần Reboot
+        for m in [m for m in list(sys.modules) if m == "hb" or m.startswith("hb.") or m == "app_main"]:
+            sys.modules.pop(m, None)
+        try:
+            import streamlit as st
+            st.cache_data.clear()
+            st.cache_resource.clear()
+        except Exception:  # noqa: BLE001
+            pass
+        sys._hocba_digest = digest
     return d
 
 
