@@ -1,0 +1,240 @@
+<title>Lộ trình Anh Văn 8+</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap">
+<style>
+/* Layout: vở ô ly — một cột đọc, thẻ "Hôm nay" nổi lên trên, lịch theo tuần bên dưới */
+:root{
+  --paper:#fbfaf6; --grid:#e9e6f3; --ink:#24213a; --muted:#6b6880; --line:#dcd8e8;
+  --card:#ffffff; --accent:#5b3fa0; --accent-soft:#ece6fa;
+  --c-t:#0f7c74; --c-g:#5b3fa0; --c-d:#c25a12; --c-s:#b42a3c; --c-x:#2860b0; --c-o:#5d6b4a; --c-k:#8a7d2a;
+  --ok:#1f7a45;
+  --f:"Lexend",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#17151f; --grid:#211e2c; --ink:#ebe8f5; --muted:#a29fb5; --line:#353147;
+  --card:#1f1c29; --accent:#b39cf0; --accent-soft:#2c2540;
+  --c-t:#4cc3b8; --c-g:#b39cf0; --c-d:#f0a060; --c-s:#f07c8c; --c-x:#7fb0f0; --c-o:#a9ba8f; --c-k:#d8c76a; --ok:#5fcf8c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#17151f; --grid:#211e2c; --ink:#ebe8f5; --muted:#a29fb5; --line:#353147;
+  --card:#1f1c29; --accent:#b39cf0; --accent-soft:#2c2540;
+  --c-t:#4cc3b8; --c-g:#b39cf0; --c-d:#f0a060; --c-s:#f07c8c; --c-x:#7fb0f0; --c-o:#a9ba8f; --c-k:#d8c76a; --ok:#5fcf8c; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f);font-size:15px;line-height:1.6;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px}
+.wrap{max-width:760px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.25}
+h1{font-size:clamp(26px,6vw,36px);font-weight:700;letter-spacing:-.01em}
+h1 span{color:var(--accent)}
+h2{font-size:20px;font-weight:600}
+h3{font-size:16px;font-weight:600}
+p{margin:0}
+.muted{color:var(--muted)}
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:500}
+header{display:flex;flex-direction:column;gap:12px}
+.stats{display:flex;flex-wrap:wrap;gap:10px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 14px;font-variant-numeric:tabular-nums}
+.stat b{font-size:20px;color:var(--accent)}
+.bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ok);width:0;transition:width .3s}
+section{display:flex;flex-direction:column;gap:12px}
+.today{background:var(--card);border:2px solid var(--accent);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.day{background:var(--card);border:1px solid var(--line);border-radius:12px}
+.day>summary{list-style:none;cursor:pointer;padding:12px 14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.day>summary::-webkit-details-marker{display:none}
+.day[open]>summary{border-bottom:1px solid var(--line)}
+.day.is-today{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.day.is-done{opacity:.72}
+.date{font-weight:600;min-width:92px;font-variant-numeric:tabular-nums}
+.sum{flex:1;min-width:0;color:var(--muted);font-size:13px}
+.pill{font-size:12px;padding:2px 9px;border-radius:99px;background:var(--accent-soft);color:var(--accent);font-weight:500;white-space:nowrap;font-variant-numeric:tabular-nums}
+.pill.ok{background:transparent;color:var(--ok);border:1px solid var(--ok)}
+.blocks{list-style:none;margin:0;padding:8px 14px 14px;display:flex;flex-direction:column;gap:2px}
+.blk{display:grid;grid-template-columns:22px 52px 1fr;gap:8px;align-items:start;padding:7px 0;border-bottom:1px dashed var(--line)}
+.blk:last-child{border-bottom:0}
+.blk input{width:18px;height:18px;margin:3px 0 0;accent-color:var(--ok)}
+.blk .m{font-variant-numeric:tabular-nums;color:var(--muted);font-size:13px;padding-top:2px}
+.blk .txt{min-width:0}
+.blk.done .txt{text-decoration:line-through;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-right:6px}
+.t-t{color:var(--c-t)}.t-g{color:var(--c-g)}.t-d{color:var(--c-d)}.t-s{color:var(--c-s)}.t-x{color:var(--c-x)}.t-o{color:var(--c-o)}.t-k{color:var(--c-k)}.t-w{color:var(--c-s)}.t-v{color:var(--c-t)}
+.kid{margin-top:6px;background:var(--accent-soft);border-radius:8px;padding:10px 12px;font-size:14px;display:flex;flex-direction:column;gap:4px}
+.kid code{font-family:inherit;font-weight:600;color:var(--accent)}
+button.link{all:unset;cursor:pointer;color:var(--accent);font-size:13px;text-decoration:underline;text-underline-offset:3px}
+button.link:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.week h2{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.phase{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.phase .n{font-size:12px;color:var(--accent);font-weight:600}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px}
+ol,ul.plain{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+td,th{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+.tw{overflow-x:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.gcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.gcard h3{font-size:15px}
+.gcard .num{color:var(--accent);font-weight:700;margin-right:4px}
+.gcard .ex{color:var(--muted)}
+.note{border-left:3px solid var(--c-d);padding:8px 12px;background:var(--card);border-radius:0 8px 8px 0;font-size:14px}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+
+<div class="wrap">
+<header>
+  <p class="eyebrow">Anh Văn cấp độ 3 · thi chiều Thứ 3, 1/12/2026 · 50 câu · 60 phút · mục tiêu A+ (từ 8,5)</p>
+  <h1>Thuộc <span>tài liệu của cô</span></h1>
+  <p class="muted">Lịch mới từ Thứ 7, 14/11. Chỉ học đúng những gì cô cho: 240 câu trắc nghiệm, 33 mẫu + 36 câu biến đổi câu, 4 bài điền từ, 4 bài đọc. 19 đề cũ đã cất vào <b>Kho lưu trữ</b> trong app (vẫn mở xem được). Học hết tài liệu trước chuyến Đà Lạt, sau đó ôn đi ôn lại.</p>
+  <div class="stats">
+    <div class="stat"><b id="sDays">–</b> ngày tới kỳ thi</div>
+    <div class="stat"><b id="sDone">0</b>/<span id="sAll">0</span> việc xong</div>
+    <div class="stat"><b id="sHours">–</b> giờ học tổng</div>
+  </div>
+  <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+</header>
+
+<section aria-labelledby="hToday">
+  <h2 id="hToday">Việc hôm nay</h2>
+  <div class="today" id="today"></div>
+</section>
+
+<section>
+  <h2>6 bước làm 1 câu</h2>
+  <div class="box">
+    <ol>
+      <li><b>Đọc câu.</b> Chưa hiểu thì bấm "Dịch câu hỏi theo cụm" (dịch cả câu và nghĩa các đáp án).</li>
+      <li><b>Đoán trước:</b> chọn 1 đáp án, kể cả không biết. Đúng mà do <b>đoán mò</b> thì bấm "Đúng nhưng đoán mò" để mai làm lại.</li>
+      <li><b>Hiểu vì sao:</b> đọc "Vì sao chọn" (mức Siêu dễ). Chỉ bấm "Ngữ pháp câu này" khi gặp <b>dạng mới</b> lần đầu.</li>
+      <li><b>Loại 1 đáp án sai:</b> đọc "Vì sao không chọn", tự nói 1 lý do loại 1 đáp án.</li>
+      <li><b>Ghi 1 dòng bằng lời của bạn:</b> "dấu hiệu → đáp án". Vẫn chưa hiểu mới hỏi AI, rồi bấm "Sửa cho dễ hiểu hơn".</li>
+      <li><b>Nghe và đọc to</b> câu đúng 1 lần.</li>
+    </ol>
+    <div class="note">Mẫu hỏi AI: <i>"Tôi mất gốc tiếng Anh. Câu này tôi chọn ___ nhưng đáp án là ___: [dán câu hỏi + các đáp án]. Giải thích thật dễ như cho học sinh lớp 5: dấu hiệu nào cho biết đáp án, vì sao các đáp án kia sai, và 1 mẹo nhớ ngắn."</i></div>
+  </div>
+</section>
+
+<section>
+  <h2>Đề thi lấy từ đâu</h2>
+  <div class="box">
+    <ul class="plain">
+      <li><b>15 ngữ pháp + 15 từ vựng</b> ← 240 câu trắc nghiệm của cô (Unit 1–6, mỗi Unit 40 câu). App chia thành 12 bài, mỗi bài 20 câu, giữ đúng 3 đáp án a b c như sách. Đáp án đã đối chiếu với file đáp án của cô: <b>khớp cả 240 câu</b>.</li>
+      <li><b>10 điền từ</b> ← 4 bài điền từ trong file REVIEW (55 chỗ trống).</li>
+      <li><b>5 biến đổi câu</b> ← 33 mẫu và 36 câu luyện trong file SENTENCE TRANSFORMATION. File cô đánh số nhảy từ mẫu 27 sang 29, không thiếu mẫu nào.</li>
+      <li><b>5 đọc hiểu</b> ← trường ra, không biết trước. Luyện bằng 4 bài đọc của cô + các bài "Luyện đọc" lấy từ đề cũ.</li>
+    </ul>
+    <p class="note">Như vậy 45/50 câu nằm sẵn trong tài liệu cô cho. Điểm A+ (từ 8,5) cần khoảng 43/50 câu.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Mỗi ngày học thế nào</h2>
+  <div class="box">
+    <ol>
+      <li><b>Nhắc lại</b> các câu đến hạn (app tự xếp: câu sai mai gặp lại, câu đúng 2, 4 ngày sau…). Câu của cô và biến đổi câu phải <b>đúng 3 ngày khác nhau</b> mới hiện <b>Thuộc ✓</b>.</li>
+      <li><b>Dò lại bài hôm trước</b> đến khi đúng 100% (đáp án đảo, câu sai quay lại cuối lượt).</li>
+      <li><b>Học bài mới</b> theo 6 bước. Mỗi ngày trộn 2–3 bài trắc nghiệm với 1 bài biến đổi câu, điền từ hoặc đọc để não không bị chán.</li>
+    </ol>
+    <p class="note">Bận hay mệt thì ít nhất làm bước 1 (Nhắc lại) 15–20 phút trên điện thoại.</p>
+  </div>
+</section>
+
+<section>
+  <h2>3 chặng</h2>
+  <div class="phases">
+    <div class="phase"><span class="n">Chặng 1 · 14/11 – 19/11</span><h3>Học hết tài liệu của cô</h3><p class="muted">240 câu Unit 1–6, 36 câu biến đổi câu, 4 bài điền từ, 4 bài đọc. Hôm sau luôn dò lại bài hôm trước.</p></div>
+    <div class="phase"><span class="n">Đà Lạt 20 – 22/11</span><h3>Nghỉ, nhắc lại nhẹ trên xe</h3><p class="muted">Không bắt buộc: khoảng 20 phút mỗi ngày trên điện thoại.</p></div>
+    <div class="phase"><span class="n">Chặng 2 · 23/11 – 1/12</span><h3>Ôn vòng 2, vòng 3 + thi thử</h3><p class="muted">Ôn lại toàn bộ 240 câu, biến đổi câu (3 vòng), điền từ, bài đọc. Ôn 240 câu lượt 1 (24/11) và lượt 2 (29/11). Thi thử 1 (25/11), Thi thử 4 (28/11) làm liền 60 phút. Luyện thêm 10 bài đọc. 30/11 ôn nhẹ. Sáng 1/12 ôn 30 phút, chiều thi.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Lịch từng ngày</h2>
+  <p class="muted" style="font-size:13px">Thời gian là giờ học, chưa tính nghỉ. Ngày rảnh 4 tiếng xếp khoảng 2 đến 3 tiếng 20. Ngày trường cho nghỉ chia 3 buổi. Nếu bận, ưu tiên: <b>Nhắc lại</b> trước, rồi dò lại bài hôm trước.</p>
+  <div id="weeks" style="display:flex;flex-direction:column;gap:22px"></div>
+</section>
+
+
+<section>
+  <h2>Vì sao đạt được A+</h2>
+  <div class="box">
+    <ul class="plain">
+      <li><b>Chỉ học đúng thứ sẽ ra thi:</b> khoảng 360 câu thay vì 1.069 câu, nên mỗi câu được ôn nhiều vòng hơn.</li>
+      <li><b>Mỗi câu của cô gặp lại nhiều lần:</b> học mới → dò lại hôm sau → nhắc lại cách quãng → ôn vòng 2 → 2 lượt ôn trọn 240 câu. Biến đổi câu ôn 3 vòng.</li>
+      <li><b>Ước tính:</b> nếu học đủ lịch, khoảng <b>93%</b> câu của cô và câu biến đổi câu đạt "Thuộc ✓" (đúng 3 ngày khác nhau) trước ngày thi.</li>
+    </ul>
+    <p class="note">Đáp án 240 câu: theo file đáp án của cô (đã đối chiếu, khớp 100%). Bài điền từ, bài đọc và 36 câu biến đổi câu: file cô không có đáp án, nhóm chuyên gia giải và kiểm tra lại từng câu. 4 câu có thể có 2 cách hiểu được ghi "Nên hỏi cô" ngay trong app.</p>
+  </div>
+</section>
+
+</div>
+
+<script>
+const G={
+0:["Câu tiếng Anh gồm gì","Câu giống xếp lego: <code>Ai</code> + <code>làm gì</code> + <code>cái gì</code>. Người/vật luôn đứng đầu, hành động đứng sau.","I eat rice. (Tôi ăn cơm.)"],
+1:["to be, đại từ, there is/are, a/an","<code>am/is/are</code> nghĩa là \"là\" hoặc \"ở\". I am · He/She/It is · You/We/They are. <code>There is</code> + 1 thứ, <code>There are</code> + nhiều thứ. <code>an</code> trước âm a, e, i, o, u; còn lại dùng <code>a</code>.","There are two cats. She is a teacher. an apple."],
+2:["Hiện tại đơn","Việc làm <b>thường xuyên</b>, thói quen, sự thật. He/She/It thì động từ thêm <code>-s/-es</code>. Phủ định: <code>don't/doesn't + V</code> (V không thêm s nữa). Dấu hiệu: always, usually, often, every day.","She drinks milk every morning."],
+3:["Hiện tại tiếp diễn","Việc <b>đang</b> xảy ra ngay lúc nói: <code>am/is/are + V-ing</code>. Dấu hiệu: now, at the moment, Look!, Listen!","Look! The baby is sleeping."],
+4:["Quá khứ đơn","Việc <b>đã xong</b> trong quá khứ: <code>V-ed</code> hoặc cột 2 (go → went). Phủ định: <code>didn't + V</code> nguyên mẫu. Dấu hiệu: yesterday, last week, ago, in 2020.","I watched TV yesterday."],
+5:["So sánh và -ed/-ing","Từ ngắn: tall → <code>taller than</code> → <code>the tallest</code>. Từ dài: <code>more</code> beautiful <code>than</code> → <code>the most</code> beautiful. Nhớ riêng: good → better → best, bad → worse → worst. <code>-ed</code> là cảm giác của người, <code>-ing</code> là thứ gây ra cảm giác.","I am bored because the film is boring."],
+6:["Quá khứ tiếp diễn và từ nối","<code>was/were + V-ing</code>: lúc đó đang làm gì. Việc dài dùng <code>while</code> + tiếp diễn, việc chen ngang dùng <code>when</code> + quá khứ đơn. Từ nối: and (và), but (nhưng), so (nên), because (vì), although (mặc dù).","I was cooking when the phone rang."],
+7:["Giới từ và từ chỉ số lượng","<code>at</code> + giờ, <code>on</code> + thứ/ngày, <code>in</code> + tháng/năm/buổi. <code>many</code> + thứ đếm được, <code>much</code> + thứ không đếm được. <code>some</code> câu khẳng định, <code>any</code> câu hỏi và phủ định.","at 7 o'clock, on Monday, in 2026. many books, much water."],
+8:["Tương lai","<code>will + V</code>: quyết định ngay lúc nói hoặc đoán. <code>be going to + V</code>: kế hoạch có sẵn, hoặc thấy rõ dấu hiệu. Dấu hiệu: tomorrow, next week, soon.","Look at the clouds! It is going to rain."],
+9:["Câu điều kiện loại 1","Điều <b>có thể xảy ra</b>: <code>If + hiện tại đơn, S + will + V</code>.","If it rains, I will stay home."],
+10:["Động từ khuyết thiếu","can (có thể), must (phải), mustn't (cấm), should (nên), may/might (có lẽ). Sau chúng luôn là <code>V nguyên mẫu</code>, không thêm s, không thêm to.","You should sleep early. He can swim."],
+11:["Hiện tại hoàn thành","<code>have/has + V3/ed</code>: đã làm và còn liên quan tới bây giờ. <code>for</code> + khoảng thời gian, <code>since</code> + mốc. Dấu hiệu: already, yet, ever, never, just, recently.","I have lived here for 3 years / since 2023."],
+12:["Câu điều kiện loại 2","Điều <b>không có thật</b> bây giờ: <code>If + quá khứ đơn, S + would + V</code>. Với to be dùng <code>were</code> cho mọi người.","If I were a bird, I would fly."],
+13:["Biến đổi câu – phần 1","Viết lại câu <b>cùng nghĩa</b>. Mẫu hay gặp: <code>started ... ago</code> ↔ <code>have ... for</code>; <code>last ... was</code> ↔ <code>haven't ... since</code>; <code>No one is taller than Nam</code> ↔ <code>Nam is the tallest</code>.","I started learning 2 years ago → I have learned for 2 years."],
+14:["Biến đổi câu – phần 2","<code>because + câu</code> ↔ <code>because of + danh từ</code>; <code>although + câu</code> ↔ <code>despite + danh từ/V-ing</code>; 2 câu thật → điều kiện loại 2: đảo có/không và lùi thì.","I don't have money, so I can't buy it → If I had money, I could buy it."],
+15:["Mẹo bài điền từ và đọc hiểu","Điền từ: đọc cả câu trước và sau chỗ trống, hỏi \"chỗ này cần danh từ, động từ hay tính từ?\". Đọc hiểu: đọc câu hỏi trước, gạch từ khóa, tìm từ khóa trong bài (thường theo thứ tự). Câu \"ý chính\" làm cuối.","Câu hỏi có \"NOT TRUE\": tìm 3 ý đúng, đáp án là ý còn lại."],
+D1:["Dịch theo cụm 4 bước","Chia câu thành cụm nhỏ → dịch từng cụm → ghép lại → đọc lại cho xuôi tiếng Việt.","I go to school / by bike / every day → Tôi đi học / bằng xe đạp / mỗi ngày."],
+D2:["Đảo cụm danh từ","Tiếng Anh: tính từ đứng <b>trước</b> danh từ. Tiếng Việt: đứng <b>sau</b>. Dịch cụm danh từ từ phải sang trái.","a big red car → chiếc xe màu đỏ to."],
+D3:["Dịch đúng thì","Thấy thì nào thì thêm từ đó: đang (tiếp diễn), đã (quá khứ), sẽ (tương lai), đã... rồi (hoàn thành).","She has finished → Cô ấy đã làm xong rồi."]
+};
+const T={t:"Từ",g:"Ngữ pháp",d:"Đề",s:"Nhắc lại",x:"Dịch",o:"Ôn",k:"Kể lại",w:"Bớt run",v:"Thẻ từ"};
+const K=[5,"k","Tự kể lại 3 điều vừa học"];
+const L=(n)=>[25,"g","Bài "+n+" · "+G[n][0],n];
+const D=[["2026-11-14", 240, [[2, "o", "Đọc 6 bước làm 1 câu trước khi học bài mới (1 phút)"], [40, "d", "Unit 1 · câu 1–20 (làm theo 6 bước)"], [15, "d", "Đọc 2: Smoking costs (làm theo 6 bước)"]], "Bận · tối học khoảng 1 tiếng"], ["2026-11-15", 240, [[10, "s", "Nhắc lại câu đến hạn (khoảng 10 câu, đáp án đã đảo) · chia nhỏ trong ngày được"], [10, "o", "Dò lại bài hôm trước: Unit 1 · câu 1–20 · làm đến khi đúng 100% (đáp án đảo)"], [5, "o", "Dò lại bài hôm trước: Đọc 2: Smoking costs · làm đến khi đúng 100% (đáp án đảo)"], [2, "o", "Đọc 6 bước làm 1 câu trước khi học bài mới (1 phút)"], [40, "d", "Unit 1 · câu 21–40 (làm theo 6 bước)"], [40, "d", "Unit 2 · câu 1–20 (làm theo 6 bước)"], [40, "d", "Unit 2 · câu 21–40 (làm theo 6 bước)"], [35, "d", "Điền từ I: Living in the city (làm theo 6 bước)"]]], ["2026-11-16", 90, [[15, "s", "Nhắc lại câu đến hạn (khoảng 42 câu, đáp án đã đảo) · chia nhỏ trong ngày được"], [10, "o", "Dò lại bài hôm trước: Unit 1 · câu 21–40 · làm đến khi đúng 100% (đáp án đảo)"], [10, "o", "Dò lại bài hôm trước: Unit 2 · câu 1–20 · làm đến khi đúng 100% (đáp án đảo)"], [10, "o", "Dò lại bài hôm trước: Unit 2 · câu 21–40 · làm đến khi đúng 100% (đáp án đảo)"], [10, "o", "Dò lại bài hôm trước: Điền từ I: Living in the city · làm đến khi đúng 100% (đáp án đảo)"], [2, "o", "Đọc 6 bước làm 1 câu trước khi học bài mới (1 phút)"], [15, "d", "Đọc 3: Dear Angela (làm theo 6 bước)"]]], ["2026-11-17", 360, [[20, "s", "Nhắc lại câu đến hạn (khoảng 58 câu, đáp án đã đảo) · chia nhỏ trong ngày được"], [5, "o", "Dò lại bài hôm trước: Đọc 3: Dear Angela · làm đến khi đúng 100% (đáp án đảo)"], [2, "o", "Đọc 6 bước làm 1 câu trước khi học bài mới (1 phút)"], [40, "d", "Unit 3 · câu 1–20 (làm theo 6 bước)"], [40, "d", "Unit 3 · câu 21–40 (làm theo 6 bước)"], [40, "d", "Unit 4 · câu 1–20 (làm theo 6 bước)"], [40, "d", "Unit 4 · câu 21–40 (làm theo 6 bước)"], [60, "d", "Biến đổi câu của cô · câu 1–25 (làm theo 6 bước)"], [25, "d", "Đọc: The Giant Panda (Reading 4) (làm theo 6 bước)"]], "Trường cho nghỉ · chia 3 buổi"], ["2026-11-18", 240, [[30, "s", "Nhắc lại câu đến hạn (khoảng 88 câu, đáp án đã đảo) · chia nhỏ trong ngày được"], [10, "o", "Dò lại bài hôm trước: Unit 3 · câu 1–20 · làm đến khi đúng 100% (đáp án đảo)"], [10, "o", "Dò lại bài hôm trước: Unit 3 · câu 21–40 · làm đến khi đúng 100% (đáp án đảo)"], [10, "o", "Dò lại bài hôm trước: Unit 4 · câu 1–20 · làm đến khi đúng 100% (đáp án đảo)"], [10, "o", "Dò lại bài hôm trước: Unit 4 · câu 21–40 · làm đến khi đúng 100% (đáp án đảo)"], [15, "o", "Dò lại bài hôm trước: Biến đổi câu của cô · câu 1–25 · làm đến khi đúng 100% (đáp án đảo)"], [5, "o", "Dò lại bài hôm trước: Đọc: The Giant Panda (Reading 4) · làm đến khi đúng 100% (đáp án đảo)"], [2, "o", "Đọc 6 bước làm 1 câu trước khi học bài mới (1 phút)"], [40, "d", "Unit 5 · câu 1–20 (làm theo 6 bước)"], [40, "d", "Unit 5 · câu 21–40 (làm theo 6 bước)"], [35, "d", "Điền từ II: The best cities (làm theo 6 bước)"]]], ["2026-11-19", 240, [[40, "s", "Nhắc lại câu đến hạn (khoảng 118 câu, đáp án đã đảo) · chia nhỏ trong ngày được"], [10, "o", "Dò lại bài hôm trước: Unit 5 · câu 1–20 · làm đến khi đúng 100% (đáp án đảo)"], [10, "o", "Dò lại bài hôm trước: Unit 5 · câu 21–40 · làm đến khi đúng 100% (đáp án đảo)"], [10, "o", "Dò lại bài hôm trước: Điền từ II: The best cities · làm đến khi đúng 100% (đáp án đảo)"], [2, "o", "Đọc 6 bước làm 1 câu trước khi học bài mới (1 phút)"], [40, "d", "Unit 6 · câu 1–20 (làm theo 6 bước)"], [40, "d", "Unit 6 · câu 21–40 (làm theo 6 bước)"], [30, "d", "Biến đổi câu của cô · câu 26–36 (làm theo 6 bước)"], [25, "d", "Điền từ III: Shopping (làm theo 6 bước)"], [5, "o", "Mở app trên điện thoại, đăng nhập sẵn để nhắc lại trên xe"]], "Học sáng và chiều · tối lên xe đi Đà Lạt"], ["2026-11-20", 30, [[20, "s", "Nhắc lại trên điện thoại ~20 phút nếu tiện (không bắt buộc). Khoảng 40 câu đến hạn, làm được bao nhiêu thì làm."]], "Đi Đà Lạt"], ["2026-11-21", 30, [[20, "s", "Nhắc lại trên điện thoại ~20 phút nếu tiện (không bắt buộc). Khoảng 40 câu đến hạn, làm được bao nhiêu thì làm."]], "Đi Đà Lạt"], ["2026-11-22", 30, [[20, "s", "Nhắc lại trên điện thoại ~20 phút nếu tiện (không bắt buộc). Khoảng 40 câu đến hạn, làm được bao nhiêu thì làm."]], "Tối về tới nhà"], ["2026-11-23", 360, [[80, "s", "Nhắc lại câu đến hạn (khoảng 228 câu, đáp án đã đảo) · chia nhỏ trong ngày được"], [10, "o", "Dò lại bài hôm trước: Unit 6 · câu 1–20 · làm đến khi đúng 100% (đáp án đảo)"], [10, "o", "Dò lại bài hôm trước: Unit 6 · câu 21–40 · làm đến khi đúng 100% (đáp án đảo)"], [5, "o", "Dò lại bài hôm trước: Biến đổi câu của cô · câu 26–36 · làm đến khi đúng 100% (đáp án đảo)"], [5, "o", "Dò lại bài hôm trước: Điền từ III: Shopping · làm đến khi đúng 100% (đáp án đảo)"], [2, "o", "Đọc 6 bước làm 1 câu trước khi học bài mới (1 phút)"], [35, "d", "Điền từ IV: Healthy food (làm theo 6 bước)"], [25, "d", "Đọc 1: Do colours affect feelings? (làm theo 6 bước)"], [10, "o", "Ôn vòng 2: Unit 1 · câu 1–20 · làm đến khi đúng 100% (đáp án đảo)"], [10, "o", "Ôn vòng 2: Unit 1 · câu 21–40 · làm đến khi đúng 100% (đáp án đảo)"], [15, "d", "Luyện đọc 1: Saving the Pandas (đọc kỹ, gạch chân chỗ có đáp án)"], [15, "d", "Luyện đọc 2: Ben Southall's 'Best Job in the World' (đọc kỹ, gạch chân chỗ có đáp án)"]], "Trường cho nghỉ · chia 3 buổi · bắt đầu ôn vòng 2"], ["2026-11-24", 360, [[30, "s", "Nhắc lại câu đến hạn (khoảng 87 câu, đáp án đã đảo) · chia nhỏ trong ngày được"], [60, "s", "Ôn 240 câu của cô lượt 1 · làm câu chưa thuộc trước (đảo đáp án) · chia 2–3 lần"], [10, "o", "Dò lại bài hôm trước: Điền từ IV: Healthy food · làm đến khi đúng 100% (đáp án đảo)"], [5, "o", "Dò lại bài hôm trước: Đọc 1: Do colours affect feelings? · làm đến khi đúng 100% (đáp án đảo)"], [10, "o", "Ôn vòng 2: Unit 2 · câu 1–20 · làm đến khi đúng 100% (đáp án đảo)"], [10, "o", "Ôn vòng 2: Unit 2 · câu 21–40 · làm đến khi đúng 100% (đáp án đảo)"], [20, "o", "Ôn vòng 2: Biến đổi câu của cô · câu 1–36 · làm đến khi đúng 100% (đáp án đảo)"], [2, "o", "Đọc 6 bước làm 1 câu trước khi học bài mới (1 phút)"], [15, "d", "Luyện đọc 3: The Travellers' Century Club (đọc kỹ, gạch chân chỗ có đáp án)"], [15, "d", "Luyện đọc 4: Music and Its Benefits (đọc kỹ, gạch chân chỗ có đáp án)"]], "Trường cho nghỉ · chia 3 buổi"], ["2026-11-25", 240, [[20, "s", "Nhắc lại câu đến hạn (khoảng 63 câu, đáp án đã đảo) · chia nhỏ trong ngày được"], [2, "o", "Đọc 6 bước làm 1 câu trước khi học bài mới (1 phút)"], [110, "d", "Thi thử 1 · làm liền 60 phút như thi thật, rồi đọc giải thích câu sai"], [15, "d", "Luyện đọc 5: Men vs. Women in Conversations (đọc kỹ, gạch chân chỗ có đáp án)"]], "Thi thử 1"], ["2026-11-26", 240, [[25, "s", "Nhắc lại câu đến hạn (khoảng 74 câu, đáp án đã đảo) · chia nhỏ trong ngày được"], [10, "o", "Ôn vòng 2: Unit 3 · câu 1–20 · làm đến khi đúng 100% (đáp án đảo)"], [10, "o", "Ôn vòng 2: Unit 3 · câu 21–40 · làm đến khi đúng 100% (đáp án đảo)"], [10, "o", "Ôn vòng 2: Unit 4 · câu 1–20 · làm đến khi đúng 100% (đáp án đảo)"], [10, "o", "Ôn vòng 2: Unit 4 · câu 21–40 · làm đến khi đúng 100% (đáp án đảo)"], [10, "o", "Ôn vòng 2: Điền từ I: Living in the city · làm đến khi đúng 100% (đáp án đảo)"], [10, "o", "Ôn vòng 2: Điền từ II: The best cities · làm đến khi đúng 100% (đáp án đảo)"], [2, "o", "Đọc 6 bước làm 1 câu trước khi học bài mới (1 phút)"], [15, "d", "Luyện đọc 6: Football in Britain (đọc kỹ, gạch chân chỗ có đáp án)"], [15, "d", "Luyện đọc 7: The Panama Canal (đọc kỹ, gạch chân chỗ có đáp án)"], [15, "d", "Luyện đọc 10: People and Sharks (đọc kỹ, gạch chân chỗ có đáp án)"]]], ["2026-11-27", 240, [[45, "s", "Nhắc lại câu đến hạn (khoảng 130 câu, đáp án đã đảo) · chia nhỏ trong ngày được"], [10, "o", "Ôn vòng 2: Unit 5 · câu 1–20 · làm đến khi đúng 100% (đáp án đảo)"], [10, "o", "Ôn vòng 2: Unit 5 · câu 21–40 · làm đến khi đúng 100% (đáp án đảo)"], [10, "o", "Ôn vòng 2: Unit 6 · câu 1–20 · làm đến khi đúng 100% (đáp án đảo)"], [10, "o", "Ôn vòng 2: Unit 6 · câu 21–40 · làm đến khi đúng 100% (đáp án đảo)"], [5, "o", "Ôn vòng 2: Điền từ III: Shopping · làm đến khi đúng 100% (đáp án đảo)"], [10, "o", "Ôn vòng 2: Điền từ IV: Healthy food · làm đến khi đúng 100% (đáp án đảo)"], [20, "o", "Ôn vòng 3: Biến đổi câu của cô · câu 1–36 · làm đến khi đúng 100% (đáp án đảo)"], [2, "o", "Đọc 6 bước làm 1 câu trước khi học bài mới (1 phút)"], [15, "d", "Luyện đọc 8: Chess (đọc kỹ, gạch chân chỗ có đáp án)"]]], ["2026-11-28", 240, [[15, "s", "Nhắc lại câu đến hạn (khoảng 47 câu, đáp án đã đảo) · chia nhỏ trong ngày được"], [2, "o", "Đọc 6 bước làm 1 câu trước khi học bài mới (1 phút)"], [110, "d", "Thi thử 4 · làm liền 60 phút như thi thật, rồi đọc giải thích câu sai"], [15, "d", "Luyện đọc 9: The Cost of Living (đọc kỹ, gạch chân chỗ có đáp án)"]], "Thi thử 4 như thi thật"], ["2026-11-29", 240, [[45, "s", "Nhắc lại câu đến hạn (khoảng 124 câu, đáp án đã đảo) · chia nhỏ trong ngày được"], [40, "s", "Ôn trọn bài ôn của cô (biến đổi câu, điền từ, bài đọc · đảo đáp án)"], [55, "s", "Ôn 240 câu của cô lượt 2 · chỉ làm câu CHƯA THUỘC (đảo đáp án)"]], "Ôn trọn bài của cô"], ["2026-11-30", 90, [[20, "s", "Nhắc lại câu đến hạn (khoảng 50 câu, đáp án đã đảo) · chia nhỏ trong ngày được"], [20, "o", "Ôn nhẹ trước ngày thi: Biến đổi câu của cô · câu 1–36 · làm đến khi đúng 100% (đáp án đảo)"]], "Tối chỉ nhắc lại · ngủ trước 23 giờ"], ["2026-12-01", 120, [[30, "s", "Sáng: nhắc lại câu đến hạn, tối đa 30 phút (không học câu mới)"], [25, "o", "Sáng: đọc lại ghi chú các câu còn hay sai, viết ra giấy điều đang lo 10 phút"], [5, "o", "CHIỀU THI. Nghỉ ngơi, ăn trưa no, đến sớm. Làm câu dễ trước, không bỏ trống câu nào."]], "Sáng ôn nhẹ · chiều thi"]];
+const WD=["CN","T2","T3","T4","T5","T6","T7"];
+const START={CN:"14:00",T2:"19:30",T3:"8:00",T4:"14:00",T5:"8:00",T6:"8:00",T7:"14:00"};
+const START_D={"2026-11-17":"8:00","2026-11-23":"8:00","2026-11-24":"8:00"};
+const fmt=m=>m>=60?Math.floor(m/60)+" tiếng"+(m%60?" "+(m%60):""):m+" phút";
+const store={get(){try{return JSON.parse(localStorage.getItem("lt9")||"{}")}catch(e){return {}}},set(v){try{localStorage.setItem("lt9",JSON.stringify(v))}catch(e){}}};
+let done=store.get();
+const tz=()=>{try{return new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Ho_Chi_Minh"}).format(new Date())}catch(e){return new Date().toISOString().slice(0,10)}};
+const today=tz();
+const dd=s=>{const d=new Date(s+"T00:00:00");return {w:WD[d.getDay()],t:d.getDate()+"/"+(d.getMonth()+1)}};
+function kid(ref){const g=G[ref];return `<div class="kid" hidden><div>${g[1]}</div><div class="ex">Ví dụ: ${g[2]}</div></div>`}
+function blockHTML(day,b,i){const id=day+"#"+i,ref=b[3];
+  return `<li class="blk${done[id]?" done":""}"><input type="checkbox" data-id="${id}" ${done[id]?"checked":""} aria-label="${b[2].replace(/"/g,"")}"><span class="m">${b[0]}'</span><div class="txt"><span class="tag t-${b[1]}">${T[b[1]]}</span>${b[2]}${ref!==undefined?` <button class="link" data-k>xem giải thích</button>${kid(ref)}`:""}</div></li>`}
+function dayStats(d){const n=d[2].length,c=d[2].filter((b,i)=>done[d[0]+"#"+i]).length,m=d[2].reduce((a,b)=>a+(b[1]==="v"?0:b[0]),0);return {n,c,m}}
+function dayHead(d){const x=dd(d[0]),s=dayStats(d),wall=s.m+Math.floor(s.m/30)*5;
+  const cap=d[3]?`${d[3]} · học ${fmt(s.m)}`:d[1]?`Ngồi vào bàn ${START_D[d[0]]||START[x.w]} · học ${fmt(s.m)} · ≈ ${fmt(wall)} kể cả nghỉ`:"Ngày thi";
+  return {x,s,cap}}
+function render(){
+  done=store.get();
+  // today
+  let idx=D.findIndex(d=>d[0]===today);let label="Hôm nay";
+  if(idx<0&&today<D[0][0]){idx=0;label="Ngày đầu tiên"}
+  if(idx<0&&today>D[D.length-1][0]){document.getElementById("today").innerHTML="<p>Kỳ thi đã qua. Chúc bạn đạt điểm thật cao!</p>";}
+  else if(idx>=0){const d=D[idx],h=dayHead(d);
+    document.getElementById("today").innerHTML=`<div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><h3>${label} · ${h.x.w}, ${h.x.t}</h3><span class="pill${h.s.c===h.s.n?" ok":""}">${h.s.c}/${h.s.n} việc</span></div><p class="muted" style="font-size:13px">${h.cap}</p><ul class="blocks" style="padding:0">${d[2].map((b,i)=>blockHTML(d[0],b,i)).join("")}</ul>`}
+  // weeks
+  const weeks=[["Tuần 1","14/11 – 15/11",0,2],["Tuần 2","16/11 – 22/11",2,9],["Tuần 3","23/11 – 29/11",9,16],["Về đích","30/11 – 1/12",16,18]];
+  document.getElementById("weeks").innerHTML=weeks.map(w=>{const days=D.slice(w[2],w[3]),mins=days.reduce((a,d)=>a+dayStats(d).m,0);
+    return `<div class="week" style="display:flex;flex-direction:column;gap:8px"><h2>${w[0]} <span class="muted" style="font-size:14px;font-weight:400">${w[1]} · ${fmt(mins)} học</span></h2>${days.map(d=>{const h=dayHead(d),isT=d[0]===today,isD=h.s.c===h.s.n;
+      return `<details class="day${isT?" is-today":""}${isD?" is-done":""}" data-day="${d[0]}"${isT?" open":""}><summary><span class="date">${h.x.w} · ${h.x.t}</span><span class="sum">${h.cap}</span><span class="pill${isD?" ok":""}">${h.s.c}/${h.s.n}</span></summary><ul class="blocks">${d[2].map((b,i)=>blockHTML(d[0],b,i)).join("")}</ul></details>`}).join("")}</div>`}).join("");
+  // stats
+  let all=0,c=0,mins=0;D.forEach(d=>{const s=dayStats(d);all+=s.n;c+=s.c;mins+=s.m});
+  document.getElementById("sAll").textContent=all;document.getElementById("sDone").textContent=c;
+  document.getElementById("sHours").textContent=Math.round(mins/60);
+  document.getElementById("bar").style.width=(c/all*100)+"%";
+  const left=Math.round((new Date("2026-12-01T00:00:00")-new Date(today+"T00:00:00"))/864e5);
+  document.getElementById("sDays").textContent=Math.max(0,left);
+}
+if(document.getElementById("gcards"))document.getElementById("gcards").innerHTML=Object.keys(G).filter(k=>/^\d+$/.test(k)).concat(["D1","D2","D3"]).map(k=>`<div class="gcard"><h3><span class="num">${/^\d/.test(k)?"Bài "+k:k}</span>${G[k][0]}</h3><div>${G[k][1]}</div><div class="ex">Ví dụ: ${G[k][2]}</div></div>`).join("");
+document.addEventListener("change",e=>{const id=e.target.dataset&&e.target.dataset.id;if(!id)return;done=store.get();if(e.target.checked)done[id]=1;else delete done[id];store.set(done);
+  const open=[...document.querySelectorAll("details.day[open]")].map(x=>x.dataset.day);render();open.forEach(o=>{const el=document.querySelector(`details.day[data-day="${o}"]`);if(el)el.open=true})});
+document.addEventListener("click",e=>{if(e.target.matches("button[data-k]")){const k=e.target.nextElementSibling;k.hidden=!k.hidden;e.target.textContent=k.hidden?"xem giải thích":"ẩn giải thích"}});
+render();
+</script>
