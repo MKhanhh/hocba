@@ -14,12 +14,13 @@ WD = ["T2", "T3", "T4", "T5", "T6", "T7", "CN"]
 WDL = ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"]
 SLOT = {0: ("Tối", 90), 1: ("Sáng", 120), 2: ("Chiều hoặc tối", 240), 3: ("Sáng và chiều", 240),
         4: ("Cả ngày", 240), 5: ("Chiều và tối", 240), 6: ("Chiều và tối", 240)}
-FULL = {"2026-11-17", "2026-11-23", "2026-11-24"}
+FULL = {"2026-11-23", "2026-11-24"}
 TRIP = {"2026-11-20", "2026-11-21", "2026-11-22"}
-NOTE = {"2026-11-14": "Bận · tối học khoảng 1 tiếng", "2026-11-15": "Học bù ở trường · tối học khoảng 1 tiếng 30", "2026-11-17": "Trường cho nghỉ · chia 3 buổi",
-        "2026-11-19": "Học sáng và chiều · tối lên xe đi Đà Lạt", "2026-11-20": "Đi Đà Lạt", "2026-11-21": "Đi Đà Lạt",
-        "2026-11-22": "Tối về tới nhà", "2026-11-23": "Trường cho nghỉ · chia 3 buổi · bắt đầu ôn vòng 2",
-        "2026-11-24": "Trường cho nghỉ · chia 3 buổi", "2026-11-25": "Thi thử 1", "2026-11-28": "Thi thử 4 như thi thật",
+NOTE = {"2026-11-14": "Bận cả tối · nghỉ", "2026-11-15": "Học bù ở trường · tối học khoảng 1 tiếng",
+        "2026-11-17": "Rảnh khoảng 3 tiếng · bắt đầu biến đổi câu", "2026-11-18": "Rảnh khoảng 2 tiếng 30",
+        "2026-11-19": "Rảnh khoảng 2 tiếng · tối lên xe đi Đà Lạt", "2026-11-20": "Đi Đà Lạt", "2026-11-21": "Đi Đà Lạt",
+        "2026-11-22": "Tối về tới nhà", "2026-11-23": "Trường cho nghỉ · chia 3 buổi", "2026-11-24": "Trường cho nghỉ · chia 3 buổi · học xong 240 câu",
+        "2026-11-25": "Bắt đầu ôn vòng 2", "2026-11-27": "Thi thử 1 · xem lại câu sai", "2026-11-28": "Thi thử 4 như thi thật",
         "2026-11-29": "Ôn trọn bài của cô", "2026-11-30": "Tối chỉ nhắc lại · ngủ trước 23 giờ"}
 AIH = "làm theo 6 bước"
 MIN = {}            # phút học mới mỗi bộ
@@ -56,22 +57,23 @@ REC = "RECALL"
 U = lambda u, h: 30 + (u - 1) * 2 + h      # Unit u, nửa h (0: câu 1–20, 1: câu 21–40)
 V2 = "ôn vòng 2"
 P = {
-"2026-11-14": [E(U(1, 0)), E(22)],
-"2026-11-15": [REC, RL(U(1, 0)), RL(22), E(U(1, 1))],
-"2026-11-16": [REC, RL(U(1, 1)), E(U(2, 0)), E(23)],
-"2026-11-17": [REC, RL(U(2, 0)), RL(23), E(U(2, 1)), E(U(3, 0)), E(U(3, 1)), E(U(4, 0)), E(28, "1-25"), E(20)],
-"2026-11-18": [REC, RL(U(2, 1)), RL(U(3, 0)), RL(U(3, 1)), RL(U(4, 0)), RL(28, "1-25"), RL(20), E(U(4, 1)), E(U(5, 0)), E(24)],
-"2026-11-19": [REC, RL(U(4, 1)), RL(U(5, 0)), RL(24), E(U(5, 1)), E(U(6, 0)), E(28, "26-50"),
+"2026-11-14": [],
+"2026-11-15": [REC, E(U(1, 0))],
+"2026-11-16": [REC, RL(U(1, 0)), E(U(1, 1)), E(22)],
+"2026-11-17": [REC, RL(U(1, 1)), RL(22), E(U(2, 0)), E(U(2, 1)), E(28, "1-25")],
+"2026-11-18": [REC, RL(U(2, 0)), RL(U(2, 1)), RL(28, "1-25"), E(U(3, 0)), E(U(3, 1))],
+"2026-11-19": [REC, RL(U(3, 0)), RL(U(3, 1)), E(U(4, 0)), E(23),
                SELF(5, "Mở app trên điện thoại, đăng nhập sẵn để nhắc lại trên xe")],
 "2026-11-20": [REC], "2026-11-21": [REC], "2026-11-22": [REC],
-"2026-11-23": [REC, RL(U(5, 1)), RL(U(6, 0)), RL(28, "26-50"), E(U(6, 1)), E(25), E(26), E(21), RL(U(1, 0), why=V2), RL(U(1, 1), why=V2), E(42), E(43)],
-"2026-11-24": [REC, SW(None, "Ôn 240 câu của cô lượt 1 · làm câu chưa thuộc trước (đảo đáp án) · chia 2–3 lần", 60),
-               RL(U(6, 1)), RL(25), RL(26), RL(21), E(27), RL(U(2, 0), why=V2), RL(U(2, 1), why=V2), RL(28, "1-50", why=V2), E(44), E(45)],
-"2026-11-25": [REC, RL(27), E(16), E(46)],
-"2026-11-26": [REC, RL(U(3, 0), why=V2), RL(U(3, 1), why=V2), RL(U(4, 0), why=V2), RL(U(4, 1), why=V2), RL(24, why=V2), RL(25, why=V2), E(47), E(48), E(51)],
-"2026-11-27": [REC, RL(U(5, 0), why=V2), RL(U(5, 1), why=V2), RL(U(6, 0), why=V2), RL(U(6, 1), why=V2), RL(26, why=V2), RL(27, why=V2), RL(28, "1-50", why="ôn vòng 3"), E(49)],
-"2026-11-28": [REC, E(19), E(50)],
-"2026-11-29": [REC, SW("extra", "Ôn trọn bài ôn của cô (biến đổi câu, điền từ, bài đọc · đảo đáp án)", 40),
+"2026-11-23": [REC, RL(U(4, 0)), RL(23), E(U(4, 1)), E(U(5, 0)), E(U(5, 1)), E(28, "26-50"), E(24)],
+"2026-11-24": [REC, RL(U(4, 1)), RL(U(5, 0)), RL(U(5, 1)), RL(28, "26-50"), RL(24), E(U(6, 0)), E(U(6, 1)), E(25), E(20),
+               RL(U(1, 0), why=V2), RL(U(1, 1), why=V2)],
+"2026-11-25": [REC, RL(U(6, 0)), RL(U(6, 1)), RL(25), RL(20), E(26), E(21), RL(U(2, 0), why=V2), RL(U(2, 1), why=V2), RL(28, "1-50", why=V2), E(42)],
+"2026-11-26": [REC, RL(26), RL(21), E(27), SW(None, "Ôn 240 câu của cô lượt 1 · làm câu chưa thuộc trước (đảo đáp án) · chia 2–3 lần", 50),
+               RL(U(3, 0), why=V2), RL(U(3, 1), why=V2), RL(U(4, 0), why=V2), RL(U(4, 1), why=V2), RL(24, why=V2), E(43)],
+"2026-11-27": [REC, RL(27), RL(U(5, 0), why=V2), RL(U(5, 1), why=V2), RL(U(6, 0), why=V2), RL(U(6, 1), why=V2), RL(25, why=V2), RL(26, why=V2), E(16)],
+"2026-11-28": [REC, RL(27, why=V2), E(19), E(44)],
+"2026-11-29": [REC, RL(28, "1-50", why="ôn vòng 3"), SW("extra", "Ôn trọn bài ôn của cô (biến đổi câu, điền từ, bài đọc · đảo đáp án)", 40),
                SW(None, "Ôn 240 câu của cô lượt 2 · chỉ làm câu CHƯA THUỘC (đảo đáp án)", 55)],
 "2026-11-30": [REC, RL(28, "1-50", why="ôn nhẹ trước ngày thi")],
 }
@@ -113,7 +115,9 @@ while d <= date(2026, 12, 1):
     slot, bud = SLOT[d.weekday()]
     if iso in FULL: slot, bud = "Cả ngày (trường cho nghỉ)", 360
     if iso in TRIP: slot, bud = "Đi Đà Lạt", 30
-    if iso == "2026-11-15": slot, bud = "Tối (ban ngày học bù)", 90
+    BUDO = {"2026-11-14": ("Bận", 0), "2026-11-15": ("Tối (ban ngày học bù)", 60), "2026-11-16": ("Tối", 90),
+            "2026-11-17": ("Rảnh khoảng 3 tiếng", 180), "2026-11-18": ("Rảnh khoảng 2 tiếng 30", 150), "2026-11-19": ("Rảnh khoảng 2 tiếng", 120)}
+    if iso in BUDO: slot, bud = BUDO[iso]
     day = {"date": iso, "wd": WD[d.weekday()], "label": dlabel(d), "slot": slot, "budget": bud, "tasks": [], "new_words": []}
     if iso < "2026-11-14":
         day.update(slot="Đã qua", budget=0)
