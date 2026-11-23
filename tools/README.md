@@ -9,6 +9,7 @@ Thư mục này giúp chat mới làm tiếp ngay, không phải dựng lại t�
 | `build_patch.py` | Đóng gói `hocba_patch.zip` từ thư mục làm việc. |
 | `smoke_test.js` | Mở app trên máy ở một ngày giả lập, bấm mọi nút "Bắt đầu", báo lỗi. |
 | `lo-trinh.html` | Mã nguồn trang lộ trình (artifact https://claude.ai/artifact/RHtaTq5e7ASbr1Qf5RZhQ5). |
+| `meo/` | Mẹo 1 dòng "Thấy … → chọn …" cho 331 câu của cô (240 câu, 36 biến đổi câu, 55 điền từ). Sửa file json trong đây rồi chạy `python3 tools/meo/merge.py work` (gộp vào `data/meo.json` + kiểm tra đáp án). App hiện hộp **🔑 NHỚ CÂU NÀY** ngay sau khi chọn đáp án. |
 | `workbook_240.json` | 240 câu gốc trong sách của cô (Unit, số câu, 3 đáp án, đáp án theo file của cô). |
 
 ## Quy trình dời lịch (nhanh, ít token)
