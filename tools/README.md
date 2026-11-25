@@ -10,6 +10,7 @@ Thư mục này giúp chat mới làm tiếp ngay, không phải dựng lại t�
 | `smoke_test.js` | Mở app trên máy ở một ngày giả lập, bấm mọi nút "Bắt đầu", báo lỗi. |
 | `lo-trinh.html` | Mã nguồn trang lộ trình (artifact https://claude.ai/artifact/RHtaTq5e7ASbr1Qf5RZhQ5). |
 | `meo/` | Mẹo 1 dòng "Thấy … → chọn …" cho 331 câu của cô (240 câu, 36 biến đổi câu, 55 điền từ). Sửa file json trong đây rồi chạy `python3 tools/meo/merge.py work` (gộp vào `data/meo.json` + kiểm tra đáp án). App hiện hộp **🔑 NHỚ CÂU NÀY** ngay sau khi chọn đáp án. |
+| `azota_gen.py`, `azota.json` | Đề Azota: mỗi bài trong app = 1 đề (định dạng "Tự soạn đề": `*A.` = đáp án đúng, "Hướng dẫn giải" = mẹo). Link 22 đề đã tạo nằm ở `data/azota_links.json` trong app, hiện thành nút "Làm lại trên Azota". |
 | `workbook_240.json` | 240 câu gốc trong sách của cô (Unit, số câu, 3 đáp án, đáp án theo file của cô). |
 
 ## Quy trình dời lịch (nhanh, ít token)
