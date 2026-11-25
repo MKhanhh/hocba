@@ -16,15 +16,14 @@ SLOT = {0: ("Tối", 90), 1: ("Sáng", 120), 2: ("Chiều hoặc tối", 240), 3
         4: ("Cả ngày", 240), 5: ("Chiều và tối", 240), 6: ("Chiều và tối", 240)}
 FULL = {"2026-11-23", "2026-11-24"}
 TRIP = set()
-CAP = {"2026-11-26": 85}      # ngày bận: chỉ nhắc lại được khoảng chừng này câu
-NOTE = {**{f"2026-11-{d}": "Bận · nghỉ" for d in range(14, 24)},
-        "2026-11-24": "Bắt đầu · sáng, chiều, tối mỗi buổi khoảng 2 tiếng", "2026-11-25": "Học chiều và tối",
-        "2026-11-26": "Học ở trường · tối chỉ nhắc lại", "2026-11-27": "Học xong 240 câu · chia 3 buổi",
-        "2026-11-28": "Ôn vòng 2 · chiều Thi thử 4 như thi thật · chia 3 buổi", "2026-11-29": "Nhắc lại thật kỹ · ôn vòng 2 · 2 bài đọc",
-        "2026-11-30": "Tối ôn nhẹ · ngủ trước 23 giờ"}
+CAP = {}      # ngày bận: chỉ nhắc lại được khoảng chừng này câu
+NOTE = {**{f"2026-11-{d}": "Bận · nghỉ" for d in range(14, 26)},
+        "2026-11-26": "Bắt đầu · 2 giờ 15 – 5 giờ sáng · rồi đi học",
+        "2026-11-27": "Cả ngày · 4 buổi, mỗi buổi khoảng 1 tiếng 45, nghỉ giữa buổi", "2026-11-28": "Học xong 240 câu · 4 buổi",
+        "2026-11-29": "Sáng: Thi thử 4 + dò lại · tối 7–9 giờ 30: ôn vòng 2", "2026-11-30": "Sáng 3–5 giờ + tối: ôn vòng 2 · ngủ trước 22 giờ"}
 AIH = "làm theo 6 bước"
 MIN = {}            # phút học mới mỗi bộ
-for n in range(30, 42): MIN[n] = 40
+for n in range(30, 42): MIN[n] = 35   # có mẹo "Thấy → chọn" nên nhanh hơn
 MIN.update({24: 35, 25: 35, 26: 25, 27: 35, 20: 25, 21: 25, 22: 15, 23: 15})
 for n in range(42, 57): MIN[n] = 15
 
@@ -57,16 +56,16 @@ REC = "RECALL"
 U = lambda u, h: 30 + (u - 1) * 2 + h      # Unit u, nửa h (0: câu 1–20, 1: câu 21–40)
 V2 = "ôn vòng 2"
 P = {
-**{f"2026-11-{d}": [] for d in range(14, 24)},
-"2026-11-24": [E(U(1, 0)), E(U(1, 1)), E(24), E(U(2, 0)), E(U(2, 1)), E(28, "1-25"), E(U(3, 0)), E(U(3, 1))],
-"2026-11-25": [REC, RL(U(1, 0)), RL(U(1, 1)), RL(24), RL(U(2, 0)), RL(U(2, 1)), RL(28, "1-25"), RL(U(3, 0)), RL(U(3, 1)),
-               E(25), E(U(4, 0)), E(U(4, 1)), E(22)],
-"2026-11-26": [REC],
-"2026-11-27": [REC, RL(25), RL(U(4, 0)), RL(U(4, 1)), RL(22), E(U(5, 0)), E(26), E(U(5, 1)), E(28, "26-50"), E(U(6, 0)), E(U(6, 1))],
-"2026-11-28": [REC, RL(U(5, 0)), RL(26), RL(U(5, 1)), RL(28, "26-50"), RL(U(6, 0)), RL(U(6, 1)), E(27), E(23),
-               RL(U(1, 0), why=V2), RL(U(1, 1), why=V2), RL(U(2, 0), why=V2), RL(U(2, 1), why=V2), RL(24, why=V2), E(19)],
-"2026-11-29": [REC, RL(27), RL(23), RL(28, "1-50", why=V2), RL(U(3, 0), why=V2), RL(U(3, 1), why=V2), E(21), E(20)],
-"2026-11-30": [REC, SW("extra", "Ôn trọn bài ôn của cô (biến đổi câu, điền từ · đảo đáp án) · làm câu chưa thuộc trước", 20)],
+**{f"2026-11-{d}": [] for d in range(14, 26)},
+"2026-11-26": [E(U(1, 0)), E(U(1, 1)), E(24), E(U(2, 0))],
+"2026-11-27": [REC, RL(U(1, 0)), RL(U(1, 1)), RL(24), RL(U(2, 0)),
+               E(U(2, 1)), E(U(3, 0)), E(28, "1-25"), E(U(3, 1)), E(U(4, 0)), E(25), E(U(4, 1)), E(22), E(U(5, 0))],
+"2026-11-28": [REC, RL(U(2, 1)), RL(U(3, 0)), RL(28, "1-25"), RL(U(3, 1)), RL(U(4, 0)), RL(25), RL(U(4, 1)), RL(22), RL(U(5, 0)),
+               E(U(5, 1)), E(26), E(28, "26-50"), E(U(6, 0)), E(U(6, 1)), E(27), E(23)],
+"2026-11-29": [REC, E(19), RL(U(5, 1)), RL(26), RL(28, "26-50"), RL(U(6, 0)), RL(U(6, 1)), RL(27), RL(23),
+               RL(U(1, 0), why=V2), RL(U(1, 1), why=V2), RL(U(2, 0), why=V2), RL(U(2, 1), why=V2), E(21), E(20)],
+"2026-11-30": [REC, RL(28, "1-50", why=V2), RL(U(3, 0), why=V2), RL(U(3, 1), why=V2), RL(U(4, 0), why=V2), RL(U(4, 1), why=V2),
+               SW("extra", "Ôn trọn bài ôn của cô (biến đổi câu, điền từ · đảo đáp án) · làm câu chưa thuộc trước", 30)],
 }
 
 GAPS = [1, 3, 6, 12, 20]; KG = [1, 2, 4]
@@ -107,10 +106,10 @@ while d <= date(2026, 12, 1):
     slot, bud = SLOT[d.weekday()]
     if iso in FULL: slot, bud = "Cả ngày (trường cho nghỉ)", 360
     if iso in TRIP: slot, bud = "Đi Đà Lạt", 30
-    BUDO = {**{f"2026-11-{d}": ("Bận", 0) for d in range(14, 24)},
-            "2026-11-24": ("7 giờ sáng – 9 giờ tối · chia 3 buổi", 360), "2026-11-25": ("Chiều và tối", 240),
-            "2026-11-26": ("Học ở trường cả ngày · tối nhắc lại", 30), "2026-11-27": ("Cả ngày · chia 3 buổi", 360),
-            "2026-11-28": ("Cả ngày · chia 3 buổi", 360), "2026-11-29": ("Sáng và tối", 240), "2026-11-30": ("Tối", 90)}
+    BUDO = {**{f"2026-11-{d}": ("Bận", 0) for d in range(14, 26)},
+            "2026-11-26": ("2 giờ 15 – 5 giờ sáng · sau đó đi học", 150), "2026-11-27": ("3 giờ sáng – 9 giờ tối · chia 4 buổi", 420),
+            "2026-11-28": ("3 giờ sáng – 9 giờ tối · chia 4 buổi", 420), "2026-11-29": ("3–10 giờ sáng · tối 7–9 giờ 30", 400),
+            "2026-11-30": ("3–5 giờ sáng · tối 7–9 giờ 30", 220)}
     if iso in BUDO: slot, bud = BUDO[iso]
     day = {"date": iso, "wd": WD[d.weekday()], "label": dlabel(d), "slot": slot, "budget": bud, "tasks": [], "new_words": []}
     if iso < "2026-11-14":
