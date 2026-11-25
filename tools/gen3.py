@@ -19,7 +19,7 @@ TRIP = set()
 CAP = {}      # ngày bận: chỉ nhắc lại được khoảng chừng này câu
 NOTE = {**{f"2026-11-{d}": "Bận · nghỉ" for d in range(14, 26)},
         "2026-11-26": "Bắt đầu · 2 giờ 15 – 5 giờ sáng · rồi đi học",
-        "2026-11-27": "Cả ngày · 4 buổi, mỗi buổi khoảng 1 tiếng 45, nghỉ giữa buổi", "2026-11-28": "Học xong 240 câu · 4 buổi",
+        "2026-11-27": "Cả ngày · 4 buổi: 3–5h, 7–9h30, 13h30–15h30, tối 18h30–20h30 dò lại bài buổi sáng", "2026-11-28": "Học xong 240 câu · 4 buổi như Thứ 6 · tối dò lại bài buổi sáng",
         "2026-11-29": "Sáng: Thi thử 4 + dò lại · tối 7–9 giờ 30: ôn vòng 2", "2026-11-30": "Sáng 3–5 giờ + tối: ôn vòng 2 · ngủ trước 22 giờ"}
 AIH = "làm theo 6 bước"
 MIN = {}            # phút học mới mỗi bộ
@@ -59,9 +59,11 @@ P = {
 **{f"2026-11-{d}": [] for d in range(14, 26)},
 "2026-11-26": [E(U(1, 0)), E(U(1, 1)), E(24), E(U(2, 0))],
 "2026-11-27": [REC, RL(U(1, 0)), RL(U(1, 1)), RL(24), RL(U(2, 0)),
-               E(U(2, 1)), E(U(3, 0)), E(28, "1-25"), E(U(3, 1)), E(U(4, 0)), E(25), E(U(4, 1)), E(22), E(U(5, 0))],
+               E(U(2, 1)), E(U(3, 0)), E(28, "1-25"), E(U(3, 1)), E(U(4, 0)), E(25), E(U(4, 1)), E(22), E(U(5, 0)),
+               RL(U(2, 1), why="buổi tối dò lại bài buổi sáng"), RL(U(3, 0), why="buổi tối dò lại bài buổi sáng"), RL(U(3, 1), why="buổi tối dò lại bài buổi sáng")],
 "2026-11-28": [REC, RL(U(2, 1)), RL(U(3, 0)), RL(28, "1-25"), RL(U(3, 1)), RL(U(4, 0)), RL(25), RL(U(4, 1)), RL(22), RL(U(5, 0)),
-               E(U(5, 1)), E(26), E(28, "26-50"), E(U(6, 0)), E(U(6, 1)), E(27), E(23)],
+               E(U(5, 1)), E(26), E(28, "26-50"), E(U(6, 0)), E(U(6, 1)), E(27), E(23),
+               RL(U(5, 1), why="buổi tối dò lại bài buổi sáng"), RL(U(6, 0), why="buổi tối dò lại bài buổi sáng"), RL(28, "26-50", why="buổi tối dò lại bài buổi sáng")],
 "2026-11-29": [REC, E(19), RL(U(5, 1)), RL(26), RL(28, "26-50"), RL(U(6, 0)), RL(U(6, 1)), RL(27), RL(23),
                RL(U(1, 0), why=V2), RL(U(1, 1), why=V2), RL(U(2, 0), why=V2), RL(U(2, 1), why=V2), E(21), E(20)],
 "2026-11-30": [REC, RL(28, "1-50", why=V2), RL(U(3, 0), why=V2), RL(U(3, 1), why=V2), RL(U(4, 0), why=V2), RL(U(4, 1), why=V2),
