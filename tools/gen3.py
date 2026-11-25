@@ -21,7 +21,7 @@ NOTE = {**{f"2026-11-{d}": "Bận · nghỉ" for d in range(14, 26)},
         "2026-11-26": "Bắt đầu · 2 giờ 15 – 5 giờ sáng · rồi đi học",
         "2026-11-27": "Cả ngày · 4 buổi: 3–5h, 7–9h30, 13h30–15h30, tối 18h30–20h30 dò lại bài buổi sáng", "2026-11-28": "Học xong 240 câu · 4 buổi như Thứ 6 · tối dò lại bài buổi sáng",
         "2026-11-29": "Sáng: Thi thử 4 + dò lại · tối 7–9 giờ 30: ôn vòng 2", "2026-11-30": "Sáng 3–5 giờ + tối: ôn vòng 2 · ngủ trước 22 giờ"}
-AIH = "làm theo 6 bước"
+AIH = "làm theo 4 bước"
 MIN = {}            # phút học mới mỗi bộ
 for n in range(30, 42): MIN[n] = 35   # có mẹo "Thấy → chọn" nên nhanh hơn
 MIN.update({24: 35, 25: 35, 26: 25, 27: 35, 20: 25, 21: 25, 22: 15, 23: 15})
@@ -141,7 +141,7 @@ while d <= date(2026, 12, 1):
                     task = {"type": "recall", "title": f"Nhắc lại câu đến hạn (khoảng {n} câu, đáp án đã đảo) · chia nhỏ trong ngày được", "minutes": m}
                 kind = "s"
             elif it == "GUIDE":
-                task = {"type": "self", "guide": True, "title": "Đọc 6 bước làm 1 câu trước khi học bài mới (1 phút)", "minutes": 2}; kind = "o"
+                task = {"type": "self", "guide": True, "title": "Đọc 4 bước làm 1 câu trước khi học bài mới (1 phút)", "minutes": 2}; kind = "o"
             else:
                 task, kind, _, _ = it; task = dict(task)
             task["id_n"] = 200 + i
