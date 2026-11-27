@@ -16,6 +16,9 @@ for n in list(range(24, 29)) + list(range(30, 42)) + list(range(57, 63)):
         c = re.findall(r"chọn (?:câu có )?\*\*(.+?)\*\*", m)
         ans = q["options"]["ABCD".index(q["answer"])]
         pieces = [p.strip() for p in norm(c[0]).split("...") if p.strip()] if c else []
+        t = re.search(r"tìm (?:chữ|câu có) (.+)$", m)
+        if not c and t:  # kiểu mới: "Thấy ... → tìm chữ **X**" / "tìm câu có **A** + **B**"
+            pieces = [norm(x) for x in re.findall(r"\*\*(.+?)\*\*", t.group(1))]; c = [" ... ".join(pieces)]
         has = lambda o: all(p in norm(o) for p in pieces)
         partial = q["part"] in ("transform", "reading")
         ok = bool(c) and ((norm(c[0]) == norm(ans)) or (partial and has(ans) and not any(has(o) for o in q["options"] if o != ans)))
