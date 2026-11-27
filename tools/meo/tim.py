@@ -59,31 +59,32 @@ T = {
 "de59#19": (["Russia is colder than Germany"], ["Germany isn't as cold"]),
 "de59#20": (["and then I watched TV"], ["music. After that"]),
 }
-EX = pathlib.Path("work/data/exams")
-def nz(s): return s.replace("’", "'").lower()
-def text(k):
-    cue, find = T[k]
-    a = " ... ".join(cue)
-    f = " + ".join(f"**{x}**" for x in find)
-    return f"Thấy **{a}** → tìm câu có {f}" if len(find) > 1 else f"Thấy **{a}** → tìm chữ {f}"
-bad = 0; out = {}
-for k, (cue, find) in T.items():
-    e, n = k.split("#"); d = json.loads((EX / f"{e}.json").read_text())
-    q = next(x for x in d["questions"] if int(x["num"]) == int(n))
-    stem = nz(q["text"]); opts = [nz(o) for o in q["options"]]; ai = "ABCD".index(q["answer"])
-    for c in cue:
-        if nz(c) not in stem: bad += 1; print("ĐỀ KHÔNG CÓ", k, c)
-    if not all(nz(f) in opts[ai] for f in find): bad += 1; print("ĐÁP ÁN ĐÚNG KHÔNG CÓ", k, find)
-    for i, o in enumerate(opts):
-        if i != ai and all(nz(f) in o for f in find): bad += 1; print("ĐÁP ÁN SAI CŨNG CÓ", k, "ABCD"[i], o)
-    out[k] = text(k)
-print("lỗi:", bad, "/", len(T))
-if bad: sys.exit(1)
-if "--write" in sys.argv:
-    for fn, pre in (("bdc.json", "de28#"), ("handout.json", "de59#")):
-        p = pathlib.Path("tools/meo") / fn; m = json.loads(p.read_text())
-        for k, v in out.items():
-            if k.startswith(pre): m[k] = v
-        p.write_text(json.dumps(m, ensure_ascii=False, indent=0) + "\n")
-    print("đã ghi", len(out))
-for k in ("de28#5", "de28#2", "de59#12"): print(k, out[k])
+if __name__ == "__main__":
+    EX = pathlib.Path("work/data/exams")
+    def nz(s): return s.replace("’", "'").lower()
+    def text(k):
+        cue, find = T[k]
+        a = " ... ".join(cue)
+        f = " + ".join(f"**{x}**" for x in find)
+        return f"Thấy **{a}** → tìm câu có {f}" if len(find) > 1 else f"Thấy **{a}** → tìm chữ {f}"
+    bad = 0; out = {}
+    for k, (cue, find) in T.items():
+        e, n = k.split("#"); d = json.loads((EX / f"{e}.json").read_text())
+        q = next(x for x in d["questions"] if int(x["num"]) == int(n))
+        stem = nz(q["text"]); opts = [nz(o) for o in q["options"]]; ai = "ABCD".index(q["answer"])
+        for c in cue:
+            if nz(c) not in stem: bad += 1; print("ĐỀ KHÔNG CÓ", k, c)
+        if not all(nz(f) in opts[ai] for f in find): bad += 1; print("ĐÁP ÁN ĐÚNG KHÔNG CÓ", k, find)
+        for i, o in enumerate(opts):
+            if i != ai and all(nz(f) in o for f in find): bad += 1; print("ĐÁP ÁN SAI CŨNG CÓ", k, "ABCD"[i], o)
+        out[k] = text(k)
+    print("lỗi:", bad, "/", len(T))
+    if bad: sys.exit(1)
+    if "--write" in sys.argv:
+        for fn, pre in (("bdc.json", "de28#"), ("handout.json", "de59#")):
+            p = pathlib.Path("tools/meo") / fn; m = json.loads(p.read_text())
+            for k, v in out.items():
+                if k.startswith(pre): m[k] = v
+            p.write_text(json.dumps(m, ensure_ascii=False, indent=0) + "\n")
+        print("đã ghi", len(out))
+    for k in ("de28#5", "de28#2", "de59#12"): print(k, out[k])
