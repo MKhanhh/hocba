@@ -1,0 +1,1758 @@
+{
+"de20#1": {
+"cue": "basic",
+"pick": "bamboo"
+},
+"de20#2": {
+"cue": "move",
+"pick": "bamboo"
+},
+"de20#3": {
+"cue": "special",
+"pick": "two"
+},
+"de20#4": {
+"cue": "except",
+"pick": "Campaigns"
+},
+"de20#5": {
+"cue": "protect",
+"pick": "setting up reserves"
+},
+"de20#6": {
+"cue": "feature",
+"pick": "thick"
+},
+"de20#7": {
+"cue": "panda",
+"pick": "baby pandas"
+},
+"de20#8": {
+"cue": "opening",
+"pick": "transferred"
+},
+"de21#1": {
+"cue": "main",
+"pick": "influence"
+},
+"de21#2": {
+"cue": "writer recommend",
+"pick": "shown"
+},
+"de21#3": {
+"cue": "kinnick",
+"pick": "visitors"
+},
+"de21#4": {
+"cue": "yellow",
+"pick": "it irritates people sometimes"
+},
+"de21#5": {
+"cue": "interviews",
+"pick": "gives"
+},
+"de21#6": {
+"cue": "designer",
+"pick": "bright"
+},
+"de21#7": {
+"cue": "beneficial",
+"pick": "convinces"
+},
+"de21#8": {
+"cue": "implied",
+"pick": "seen"
+},
+"de22#1": {
+"cue": "kingdom",
+"pick": "would have more money"
+},
+"de22#2": {
+"cue": "companies",
+"pick": "work"
+},
+"de22#3": {
+"cue": "family of four",
+"pick": "1 640 pounds"
+},
+"de22#4": {
+"cue": "uk",
+"pick": "good health"
+},
+"de22#5": {
+"cue": "This text is about",
+"pick": "costs"
+},
+"de23#1": {
+"cue": "ashamed",
+"pick": "to explain a problem"
+},
+"de23#2": {
+"cue": "angela",
+"pick": "advice"
+},
+"de23#3": {
+"cue": "steal",
+"pick": "schoolmates"
+},
+"de23#4": {
+"cue": "afterwards",
+"pick": "she was frightened"
+},
+"de23#5": {
+"cue": "husband's",
+"pick": "he is not worried"
+},
+"de24#1": {
+"cue": "at ___ once",
+"pick": "least"
+},
+"de24#2": {
+"cue": "minh",
+"pick": "already"
+},
+"de24#3": {
+"cue": "developments",
+"pick": "keep"
+},
+"de24#4": {
+"cue": "has to ___",
+"pick": "offer"
+},
+"de24#5": {
+"cue": "distance",
+"pick": "within"
+},
+"de24#6": {
+"cue": "entertainment",
+"pick": "venues"
+},
+"de24#7": {
+"cue": "___ to living",
+"pick": "downsides"
+},
+"de24#8": {
+"cue": "___ hour",
+"pick": "rush"
+},
+"de24#9": {
+"cue": "air ___",
+"pick": "quality"
+},
+"de24#10": {
+"cue": "___ worst",
+"pick": "its"
+},
+"de24#11": {
+"cue": "green",
+"pick": "lack"
+},
+"de24#12": {
+"cue": "navigating",
+"pick": "narrow"
+},
+"de24#13": {
+"cue": "stress",
+"pick": "increased"
+},
+"de24#14": {
+"cue": "opportunities",
+"pick": "more"
+},
+"de24#15": {
+"cue": "individuals",
+"pick": "career"
+},
+"de25#1": {
+"cue": "___ internet",
+"pick": "recent"
+},
+"de25#2": {
+"cue": "to the ___",
+"pick": "worst"
+},
+"de25#3": {
+"cue": "london",
+"pick": "mainly"
+},
+"de25#4": {
+"cue": "also ___",
+"pick": "seen"
+},
+"de25#5": {
+"cue": "cultural ___",
+"pick": "center"
+},
+"de25#6": {
+"cue": "extremely",
+"pick": "because"
+},
+"de25#7": {
+"cue": "___ achieving",
+"pick": "destination"
+},
+"de25#8": {
+"cue": "___ of living",
+"pick": "standard"
+},
+"de25#9": {
+"cue": "___ problems",
+"pick": "despite"
+},
+"de25#10": {
+"cue": "___ than anywhere",
+"pick": "interest"
+},
+"de25#11": {
+"cue": "eiffel",
+"pick": "monuments"
+},
+"de25#12": {
+"cue": "destination",
+"pick": "art"
+},
+"de25#13": {
+"cue": "mainly ___",
+"pick": "tourists and business travelers"
+},
+"de25#14": {
+"cue": "reliable",
+"pick": "measure"
+},
+"de25#15": {
+"cue": "conclusion",
+"pick": "level"
+},
+"de26#1": {
+"cue": "___ in early",
+"pick": "however"
+},
+"de26#2": {
+"cue": "civilizations people ___",
+"pick": "exchanged"
+},
+"de26#3": {
+"cue": "introduction",
+"pick": "earn"
+},
+"de26#4": {
+"cue": "goldsmiths",
+"pick": "market"
+},
+"de26#5": {
+"cue": "wholesalers",
+"pick": "factories"
+},
+"de26#6": {
+"cue": "cities ___",
+"pick": "department"
+},
+"de26#7": {
+"cue": "___ articles",
+"pick": "household"
+},
+"de26#8": {
+"cue": "hand ___",
+"pick": "traditional"
+},
+"de26#9": {
+"cue": "parking ___",
+"pick": "space"
+},
+"de26#10": {
+"cue": "doorstep",
+"pick": "delivered"
+},
+"de27#1": {
+"cue": "___ our bodies",
+"pick": "into"
+},
+"de27#2": {
+"cue": "___ to our body",
+"pick": "happen"
+},
+"de27#3": {
+"cue": "heart ___",
+"pick": "disease"
+},
+"de27#4": {
+"cue": "salad",
+"pick": "taste"
+},
+"de27#5": {
+"cue": "___ got enough",
+"pick": "haven't"
+},
+"de27#6": {
+"cue": "needs ___",
+"pick": "them"
+},
+"de27#7": {
+"cue": "everybody",
+"pick": "junk"
+},
+"de27#8": {
+"cue": "products",
+"pick": "takes"
+},
+"de27#9": {
+"cue": "___ other activities",
+"pick": "doing"
+},
+"de27#10": {
+"cue": "hanging ___",
+"pick": "out"
+},
+"de27#11": {
+"cue": "unaware",
+"pick": "of"
+},
+"de27#12": {
+"cue": "preparing",
+"pick": "to"
+},
+"de27#13": {
+"cue": "habits",
+"pick": "to"
+},
+"de27#14": {
+"cue": "importance",
+"pick": "about"
+},
+"de27#15": {
+"cue": "conscious",
+"pick": "of"
+},
+"de28#1": {
+"cue": "doesn't ... as hard as",
+"pick": "harder than"
+},
+"de28#2": {
+"cue": "talk to your teacher",
+"pick": "were you, I would"
+},
+"de28#3": {
+"cue": "the first time",
+"pick": "never visited"
+},
+"de28#4": {
+"cue": "tired, so I can't",
+"pick": "weren't"
+},
+"de28#5": {
+"cue": "started ... in 2010",
+"pick": "has worked + since"
+},
+"de28#6": {
+"cue": "meat",
+"pick": "doesn't"
+},
+"de28#7": {
+"cue": "because the rain was heavy",
+"pick": "heavy rain"
+},
+"de28#8": {
+"cue": "was sick, but",
+"pick": "was sick"
+},
+"de28#9": {
+"cue": "with the idea of learning",
+"pick": "to learn"
+},
+"de28#10": {
+"cue": "a good idea to",
+"pick": "should"
+},
+"de28#11": {
+"cue": "I think ... will",
+"pick": "should"
+},
+"de28#12": {
+"cue": "use ... to cut",
+"pick": "for cutting"
+},
+"de28#13": {
+"cue": "unnecessary",
+"pick": "don't have to"
+},
+"de28#14": {
+"cue": "are you going to wear",
+"pick": "are you wearing"
+},
+"de28#15": {
+"cue": "studies hard to get",
+"pick": "she studies"
+},
+"de28#16": {
+"cue": "too heavy to lift",
+"pick": "couldn't"
+},
+"de28#17": {
+"cue": "used to live",
+"pick": "don't live"
+},
+"de28#18": {
+"cue": "cannot enter",
+"pick": "not allowed"
+},
+"de28#19": {
+"cue": "would rather rest than study",
+"pick": "I dislike studying"
+},
+"de28#20": {
+"cue": "noisy while he played",
+"pick": "noisily"
+},
+"de28#21": {
+"cue": "most talented",
+"pick": "more + than"
+},
+"de28#22": {
+"cue": "talks too much ... bored",
+"pick": "more bored"
+},
+"de28#23": {
+"cue": "difficult to understand",
+"pick": "understand the"
+},
+"de28#24": {
+"cue": "sorry when she heard",
+"pick": "to hear"
+},
+"de28#25": {
+"cue": "little",
+"pick": "much"
+},
+"de28#26": {
+"cue": "because the traffic was bad",
+"pick": "the bad traffic"
+},
+"de28#27": {
+"cue": "will increase",
+"pick": "likely to increase"
+},
+"de28#28": {
+"cue": "used to play",
+"pick": "doesn't"
+},
+"de28#29": {
+"cue": "cause",
+"pick": "lead to"
+},
+"de28#30": {
+"cue": "won't ... if she doesn't try",
+"pick": "without"
+},
+"de28#31": {
+"cue": "unusual",
+"pick": "different from"
+},
+"de28#32": {
+"cue": "Although",
+"pick": "Despite practicing"
+},
+"de28#33": {
+"cue": "They repaired",
+"pick": "was repaired"
+},
+"de28#34": {
+"cue": "needs to",
+"pick": "for him to"
+},
+"de28#35": {
+"cue": "were dancing when",
+"pick": "while"
+},
+"de28#36": {
+"cue": "not as expensive as yours",
+"pick": "more expensive"
+},
+"de30#1": {
+"cue": "keys",
+"pick": "lose"
+},
+"de30#2": {
+"cue": "___ work",
+"pick": "do you"
+},
+"de30#3": {
+"cue": "bus i'm",
+"pick": "impatient"
+},
+"de30#4": {
+"cue": "laptop",
+"pick": "remember"
+},
+"de30#5": {
+"cue": "after dinner",
+"pick": "= hardly ever drink"
+},
+"de30#6": {
+"cue": "clubs",
+"pick": "= meet"
+},
+"de30#7": {
+"cue": "profile",
+"pick": "dishonest"
+},
+"de30#8": {
+"cue": "work right",
+"pick": "that's why"
+},
+"de30#9": {
+"cue": "julia",
+"pick": "earn"
+},
+"de30#10": {
+"cue": "tim",
+"pick": "is staying"
+},
+"de30#11": {
+"cue": "pilar",
+"pick": "= look"
+},
+"de30#12": {
+"cue": "neighbors",
+"pick": "rude"
+},
+"de30#13": {
+"cue": "families",
+"pick": "spend"
+},
+"de30#14": {
+"cue": "lemon",
+"pick": "reminds"
+},
+"de30#15": {
+"cue": "shape",
+"pick": "stay"
+},
+"de30#16": {
+"cue": "stressed",
+"pick": "is always"
+},
+"de30#17": {
+"cue": "i'm learning",
+"pick": "the guitar"
+},
+"de30#18": {
+"cue": "parties",
+"pick": "shy"
+},
+"de30#19": {
+"cue": "___ for you outside",
+"pick": "wait"
+},
+"de30#20": {
+"cue": "artists",
+"pick": "= read"
+},
+"de31#1": {
+"cue": "concerts",
+"pick": "blogs"
+},
+"de31#2": {
+"cue": "mark",
+"pick": "is running"
+},
+"de31#3": {
+"cue": "get exercise",
+"pick": "usually go"
+},
+"de31#4": {
+"cue": "many countries",
+"pick": "polite"
+},
+"de31#5": {
+"cue": "doesn't rain",
+"pick": "hope"
+},
+"de31#6": {
+"cue": "___ online for",
+"pick": "shop"
+},
+"de31#7": {
+"cue": "computers",
+"pick": "patient"
+},
+"de31#8": {
+"cue": "___ now",
+"pick": "are you going"
+},
+"de31#9": {
+"cue": "clara",
+"pick": "doesn't have"
+},
+"de31#10": {
+"cue": "max",
+"pick": "tell"
+},
+"de31#11": {
+"cue": "cupcakes",
+"pick": "generous"
+},
+"de31#12": {
+"cue": "ricardo",
+"pick": "plays"
+},
+"de31#13": {
+"cue": "coat",
+"pick": "'m not wearing"
+},
+"de31#14": {
+"cue": "all working",
+"pick": "because"
+},
+"de31#15": {
+"cue": "end of class",
+"pick": "give"
+},
+"de31#16": {
+"cue": "___ tv",
+"pick": "= never watch"
+},
+"de31#17": {
+"cue": "amy",
+"pick": "is studying"
+},
+"de31#18": {
+"cue": "thinks",
+"pick": "funny"
+},
+"de31#19": {
+"cue": "friend ___",
+"pick": "often drives"
+},
+"de31#20": {
+"cue": "lazy",
+"pick": "so"
+},
+"de32#1": {
+"cue": "aydin",
+"pick": "was born"
+},
+"de32#2": {
+"cue": "snakes",
+"pick": "terrifying"
+},
+"de32#3": {
+"cue": "light",
+"pick": "stopped"
+},
+"de32#4": {
+"cue": "remind",
+"pick": "who"
+},
+"de32#5": {
+"cue": "august",
+"pick": "on"
+},
+"de32#6": {
+"cue": "theater",
+"pick": "embarrassing"
+},
+"de32#7": {
+"cue": "pamela",
+"pick": "college"
+},
+"de32#8": {
+"cue": "boyfriend",
+"pick": "took"
+},
+"de32#9": {
+"cue": "accident",
+"pick": "did your mom say"
+},
+"de32#10": {
+"cue": "october",
+"pick": "later"
+},
+"de32#11": {
+"cue": "bed",
+"pick": "tired"
+},
+"de32#12": {
+"cue": "alicia",
+"pick": "baked"
+},
+"de32#13": {
+"cue": "new office",
+"pick": "did you go"
+},
+"de32#14": {
+"cue": "sixteen",
+"pick": "finish school"
+},
+"de32#15": {
+"cue": "website",
+"pick": "weren't"
+},
+"de32#16": {
+"cue": "___ are they annoyed",
+"pick": "why"
+},
+"de32#17": {
+"cue": "wedding it's",
+"pick": "disappointing"
+},
+"de32#18": {
+"cue": "sociable",
+"pick": "= how"
+},
+"de32#19": {
+"cue": "each",
+"pick": "a divorce"
+},
+"de32#20": {
+"cue": "husband ___",
+"pick": "five years ago"
+},
+"de33#1": {
+"cue": "animals",
+"pick": "surprised"
+},
+"de33#2": {
+"cue": "crying",
+"pick": "why are you"
+},
+"de33#3": {
+"cue": "movies",
+"pick": "= then"
+},
+"de33#4": {
+"cue": "saturday night",
+"pick": "didn't"
+},
+"de33#5": {
+"cue": "busy day",
+"pick": "relaxing"
+},
+"de33#6": {
+"cue": "immediately",
+"pick": "fell in love"
+},
+"de33#7": {
+"cue": "new job",
+"pick": "when"
+},
+"de33#8": {
+"cue": "explain",
+"pick": "confused"
+},
+"de33#9": {
+"cue": "married",
+"pick": "had"
+},
+"de33#10": {
+"cue": "couldn't buy",
+"pick": "didn't have"
+},
+"de33#11": {
+"cue": "decided",
+"pick": "after 40 minutes"
+},
+"de33#12": {
+"cue": "geography",
+"pick": "interested"
+},
+"de33#13": {
+"cue": "grandparents",
+"pick": "many"
+},
+"de33#14": {
+"cue": "restaurant",
+"pick": "started"
+},
+"de33#15": {
+"cue": "competition",
+"pick": "surprising"
+},
+"de33#16": {
+"cue": "video",
+"pick": "did you play"
+},
+"de33#17": {
+"cue": "o'clock",
+"pick": "at"
+},
+"de33#18": {
+"cue": "grandchildren",
+"pick": "after that"
+},
+"de33#19": {
+"cue": "middle",
+"pick": "what"
+},
+"de33#20": {
+"cue": "helen",
+"pick": "last year"
+},
+"de34#1": {
+"cue": "brush",
+"pick": "messy"
+},
+"de34#2": {
+"cue": "___ my wallet",
+"pick": "lost"
+},
+"de34#3": {
+"cue": "slow",
+"pick": "as fast as"
+},
+"de34#4": {
+"cue": "last vacation",
+"pick": "hotel"
+},
+"de34#5": {
+"cue": "waiting",
+"pick": "nervously"
+},
+"de34#6": {
+"cue": "single",
+"pick": "reserve"
+},
+"de34#7": {
+"cue": "riders",
+"pick": "polluted"
+},
+"de34#8": {
+"cue": "english",
+"pick": "worse"
+},
+"de34#9": {
+"cue": "evening",
+"pick": "were sunbathing"
+},
+"de34#10": {
+"cue": "stations",
+"pick": "slow"
+},
+"de34#11": {
+"cue": "technology",
+"pick": "modern"
+},
+"de34#12": {
+"cue": "camping",
+"pick": "go"
+},
+"de34#13": {
+"cue": "vacations",
+"pick": "more relaxing than"
+},
+"de34#14": {
+"cue": "colosseum",
+"pick": "ancient"
+},
+"de34#15": {
+"cue": "tomás",
+"pick": "saw"
+},
+"de34#16": {
+"cue": "she asked ___",
+"pick": "politely"
+},
+"de34#17": {
+"cue": "india",
+"pick": "when"
+},
+"de34#18": {
+"cue": "santiago",
+"pick": "well"
+},
+"de34#19": {
+"cue": "cafés",
+"pick": "lively"
+},
+"de34#20": {
+"cue": "subway",
+"pick": "not as crowded as"
+},
+"de35#1": {
+"cue": "science",
+"pick": "visit"
+},
+"de35#2": {
+"cue": "suitcases",
+"pick": "practical"
+},
+"de35#3": {
+"cue": "sit ___",
+"pick": "quietly"
+},
+"de35#4": {
+"cue": "airport this morning",
+"pick": "went"
+},
+"de35#5": {
+"cue": "yourself",
+"pick": "pack"
+},
+"de35#6": {
+"cue": "person",
+"pick": "funniest"
+},
+"de35#7": {
+"cue": "flower",
+"pick": "unusual"
+},
+"de35#8": {
+"cue": "groceries",
+"pick": "was carrying"
+},
+"de35#9": {
+"cue": "always eat",
+"pick": "out"
+},
+"de35#10": {
+"cue": "exams",
+"pick": "hard"
+},
+"de35#11": {
+"cue": "last year",
+"pick": "shorter"
+},
+"de35#12": {
+"cue": "lima",
+"pick": "uncomfortable"
+},
+"de35#13": {
+"cue": "sleeping",
+"pick": "wasn't"
+},
+"de35#14": {
+"cue": "madrid",
+"pick": "guided tour"
+},
+"de35#15": {
+"cue": "___ room",
+"pick": "the least comfortable"
+},
+"de35#16": {
+"cue": "elma",
+"pick": "walked home quickly"
+},
+"de35#17": {
+"cue": "luckily",
+"pick": "weren't driving"
+},
+"de35#18": {
+"cue": "presents",
+"pick": "busy"
+},
+"de35#19": {
+"cue": "samuel's",
+"pick": "she is"
+},
+"de35#20": {
+"cue": "budapest",
+"pick": "seat"
+},
+"de36#1": {
+"cue": "abroad",
+"pick": "i probably won't"
+},
+"de36#2": {
+"cue": "firefighter",
+"pick": "he"
+},
+"de36#3": {
+"cue": "next weekend",
+"pick": "are you doing"
+},
+"de36#4": {
+"cue": "excellent",
+"pick": "an accountant"
+},
+"de36#5": {
+"cue": "patricia's",
+"pick": "'s not going"
+},
+"de36#6": {
+"cue": "pay raise",
+"pick": "got"
+},
+"de36#7": {
+"cue": "promotion",
+"pick": "will"
+},
+"de36#8": {
+"cue": "explained",
+"pick": "director"
+},
+"de36#9": {
+"cue": "letters",
+"pick": "them"
+},
+"de36#10": {
+"cue": "going ___",
+"pick": "movie tomorrow"
+},
+"de36#11": {
+"cue": "limited",
+"pick": "receptionist"
+},
+"de36#12": {
+"cue": "knew",
+"pick": "ad"
+},
+"de36#13": {
+"cue": "hairdressers",
+"pick": "they"
+},
+"de36#14": {
+"cue": "vegetarian",
+"pick": "might"
+},
+"de36#15": {
+"cue": "salesperson",
+"pick": "is taking"
+},
+"de36#16": {
+"cue": "home tonight",
+"pick": "'re going to relax"
+},
+"de36#17": {
+"cue": "carried",
+"pick": "waitress"
+},
+"de36#18": {
+"cue": "university",
+"pick": "degree"
+},
+"de36#19": {
+"cue": "sure",
+"pick": "will"
+},
+"de36#20": {
+"cue": "intern",
+"pick": "as"
+},
+"de37#1": {
+"cue": "thursday",
+"pick": "'m going"
+},
+"de37#2": {
+"cue": "almódovar",
+"pick": "reporter"
+},
+"de37#3": {
+"cue": "designer",
+"pick": "her"
+},
+"de37#4": {
+"cue": "résumé",
+"pick": "writing"
+},
+"de37#5": {
+"cue": "resorts",
+"pick": "travel agent"
+},
+"de37#6": {
+"cue": "there'll",
+"pick": "tonight"
+},
+"de37#7": {
+"cue": "son",
+"pick": "'s going to finish"
+},
+"de37#8": {
+"cue": "sent",
+"pick": "application"
+},
+"de37#9": {
+"cue": "weight",
+"pick": "its"
+},
+"de37#10": {
+"cue": "accountant",
+"pick": "journalist"
+},
+"de37#11": {
+"cue": "andy",
+"pick": "will"
+},
+"de37#12": {
+"cue": "summer",
+"pick": "'s"
+},
+"de37#13": {
+"cue": "salary",
+"pick": "agreed"
+},
+"de37#14": {
+"cue": "grandma",
+"pick": "i am"
+},
+"de37#15": {
+"cue": "guard",
+"pick": "security"
+},
+"de37#16": {
+"cue": "sofia",
+"pick": "may"
+},
+"de37#17": {
+"cue": "officer",
+"pick": "applied"
+},
+"de37#18": {
+"cue": "quick",
+"pick": "it's"
+},
+"de37#19": {
+"cue": "15",
+"pick": "are you taking"
+},
+"de37#20": {
+"cue": "definitely",
+"pick": "will"
+},
+"de38#1": {
+"cue": "some free",
+"pick": "'ll go"
+},
+"de38#2": {
+"cue": "call my husband",
+"pick": "should"
+},
+"de38#3": {
+"cue": "basketball",
+"pick": "guilty"
+},
+"de38#4": {
+"cue": "hour",
+"pick": "stressed"
+},
+"de38#5": {
+"cue": "katie",
+"pick": "extremely"
+},
+"de38#6": {
+"cue": "language",
+"pick": "made"
+},
+"de38#7": {
+"cue": "___ i send",
+"pick": "should"
+},
+"de38#8": {
+"cue": "lorenzo",
+"pick": "burned"
+},
+"de38#9": {
+"cue": "excuse",
+"pick": "don't want"
+},
+"de38#10": {
+"cue": "you're late",
+"pick": "calm"
+},
+"de38#11": {
+"cue": "presentation",
+"pick": "take"
+},
+"de38#12": {
+"cue": "look tired",
+"pick": "take a nap"
+},
+"de38#13": {
+"cue": "romero",
+"pick": "have an earache"
+},
+"de38#14": {
+"cue": "happy because",
+"pick": "not very"
+},
+"de38#15": {
+"cue": "sunny",
+"pick": "will you walk"
+},
+"de38#16": {
+"cue": "deepti",
+"pick": "delighted"
+},
+"de38#17": {
+"cue": "mistakes",
+"pick": "make"
+},
+"de38#18": {
+"cue": "camilo",
+"pick": "you should"
+},
+"de38#19": {
+"cue": "feel",
+"pick": "a little"
+},
+"de38#20": {
+"cue": "temperature",
+"pick": "the flu"
+},
+"de39#1": {
+"cue": "decision",
+"pick": "= offer"
+},
+"de39#2": {
+"cue": "five",
+"pick": "have"
+},
+"de39#3": {
+"cue": "feeling",
+"pick": "envious"
+},
+"de39#4": {
+"cue": "joins",
+"pick": "= might meet"
+},
+"de39#5": {
+"cue": "stairs",
+"pick": "hurts"
+},
+"de39#6": {
+"cue": "leave work",
+"pick": "= you should"
+},
+"de39#7": {
+"cue": "marcela",
+"pick": "do"
+},
+"de39#8": {
+"cue": "finished",
+"pick": "= very"
+},
+"de39#9": {
+"cue": "skiing",
+"pick": "broke his leg"
+},
+"de39#10": {
+"cue": "doll",
+"pick": "upset"
+},
+"de39#11": {
+"cue": "don't come",
+"pick": "won't"
+},
+"de39#12": {
+"cue": "questions",
+"pick": "take"
+},
+"de39#13": {
+"cue": "weekends",
+"pick": "really"
+},
+"de39#14": {
+"cue": "call the dentist",
+"pick": "a toothache"
+},
+"de39#15": {
+"cue": "job interview",
+"pick": "nervous"
+},
+"de39#16": {
+"cue": "pills",
+"pick": "= you should"
+},
+"de39#17": {
+"cue": "weather",
+"pick": "an argument"
+},
+"de39#18": {
+"cue": "confident",
+"pick": "= be"
+},
+"de39#19": {
+"cue": "headache all",
+"pick": "miserable"
+},
+"de39#20": {
+"cue": "list",
+"pick": "make"
+},
+"de40#1": {
+"cue": "computer",
+"pick": "i were"
+},
+"de40#2": {
+"cue": "washed",
+"pick": "clean up"
+},
+"de40#3": {
+"cue": "mexico",
+"pick": "went"
+},
+"de40#4": {
+"cue": "cat",
+"pick": "take care of"
+},
+"de40#5": {
+"cue": "europe",
+"pick": "been"
+},
+"de40#6": {
+"cue": "top",
+"pick": "cliffs"
+},
+"de40#7": {
+"cue": "climbing",
+"pick": "too"
+},
+"de40#8": {
+"cue": "jonathan",
+"pick": "given up"
+},
+"de40#9": {
+"cue": "austria",
+"pick": "and"
+},
+"de40#10": {
+"cue": "bird",
+"pick": "branch"
+},
+"de40#11": {
+"cue": "we've ___",
+"pick": "run out"
+},
+"de40#12": {
+"cue": "___ do pilates",
+"pick": "didn't"
+},
+"de40#13": {
+"cue": "traveled",
+"pick": "many times"
+},
+"de40#14": {
+"cue": "cooking",
+"pick": "go on"
+},
+"de40#15": {
+"cue": "sightseeing",
+"pick": "as well"
+},
+"de40#16": {
+"cue": "thunderstorm",
+"pick": "lightning"
+},
+"de40#17": {
+"cue": "passport",
+"pick": "fill out"
+},
+"de40#18": {
+"cue": "aren't",
+"pick": "waves"
+},
+"de40#19": {
+"cue": "have you ever ___",
+"pick": "seen"
+},
+"de40#20": {
+"cue": "any country",
+"pick": "would you"
+},
+"de41#1": {
+"cue": "newspaper i'm",
+"pick": "throw away"
+},
+"de41#2": {
+"cue": "attractions",
+"pick": "also"
+},
+"de41#3": {
+"cue": "anna's",
+"pick": "broke down"
+},
+"de41#4": {
+"cue": "boat",
+"pick": "valley"
+},
+"de41#5": {
+"cue": "nervous if",
+"pick": "'d be"
+},
+"de41#6": {
+"cue": "wouldn't",
+"pick": "wildlife"
+},
+"de41#7": {
+"cue": "arrives",
+"pick": "find out"
+},
+"de41#8": {
+"cue": "___ a vacation",
+"pick": "'ve never had"
+},
+"de41#9": {
+"cue": "more exercise",
+"pick": "had"
+},
+"de41#10": {
+"cue": "miserable",
+"pick": "thunderstorm"
+},
+"de41#11": {
+"cue": "parachuting",
+"pick": "has never tried"
+},
+"de41#12": {
+"cue": "___ isn't",
+"pick": "stream"
+},
+"de41#13": {
+"cue": "dictionary",
+"pick": "looked it up"
+},
+"de41#14": {
+"cue": "ocean",
+"pick": "rocks"
+},
+"de41#15": {
+"cue": "pink",
+"pick": "sunrise"
+},
+"de41#16": {
+"cue": "nap",
+"pick": "could take"
+},
+"de41#17": {
+"cue": "janeiro",
+"pick": "coast"
+},
+"de41#18": {
+"cue": "haven't",
+"pick": "turned it on"
+},
+"de41#19": {
+"cue": "radio",
+"pick": "'ve heard"
+},
+"de41#20": {
+"cue": "hasn't",
+"pick": "given back"
+},
+"de57#1": {
+"cue": "brush",
+"pick": "messy"
+},
+"de57#2": {
+"cue": "surrounding",
+"pick": "peak"
+},
+"de57#3": {
+"cue": "neighbours",
+"pick": "rude"
+},
+"de57#4": {
+"cue": "many countries",
+"pick": "polite"
+},
+"de57#5": {
+"cue": "arrived",
+"pick": "guilty"
+},
+"de57#6": {
+"cue": "riders",
+"pick": "polluted"
+},
+"de57#7": {
+"cue": "competition",
+"pick": "surprising"
+},
+"de57#8": {
+"cue": "packages",
+"pick": "travel agent"
+},
+"de57#9": {
+"cue": "single",
+"pick": "reserve"
+},
+"de57#10": {
+"cue": "describes",
+"pick": "résumé"
+},
+"de57#11": {
+"cue": "supermarket",
+"pick": "run out of"
+},
+"de57#12": {
+"cue": "thinks",
+"pick": "funny"
+},
+"de57#13": {
+"cue": "colleague",
+"pick": "honest"
+},
+"de57#14": {
+"cue": "dishes",
+"pick": "out"
+},
+"de57#15": {
+"cue": "comfortable",
+"pick": "hotel"
+},
+"de57#16": {
+"cue": "attempt",
+"pick": "delighted"
+},
+"de57#17": {
+"cue": "presents",
+"pick": "busy"
+},
+"de57#18": {
+"cue": "resorts",
+"pick": "travel agent"
+},
+"de57#19": {
+"cue": "job interview",
+"pick": "nervous"
+},
+"de57#20": {
+"cue": "appointment",
+"pick": "toothache"
+},
+"de58#1": {
+"cue": "travel",
+"pick": "had"
+},
+"de58#2": {
+"cue": "after dinner",
+"pick": "= hardly ever drink"
+},
+"de58#3": {
+"cue": "travelling",
+"pick": "= cheaper"
+},
+"de58#4": {
+"cue": "tim",
+"pick": "is staying"
+},
+"de58#5": {
+"cue": "real",
+"pick": "have seen"
+},
+"de58#6": {
+"cue": "alicia",
+"pick": "baked"
+},
+"de58#7": {
+"cue": "taking",
+"pick": "usually drives"
+},
+"de58#8": {
+"cue": "evening",
+"pick": "were sunbathing"
+},
+"de58#9": {
+"cue": "exhausted",
+"pick": "= should"
+},
+"de58#10": {
+"cue": "august",
+"pick": "on"
+},
+"de58#11": {
+"cue": "cinema",
+"pick": "went"
+},
+"de58#12": {
+"cue": "___ now",
+"pick": "are you going"
+},
+"de58#13": {
+"cue": "clouds",
+"pick": "is going to rain"
+},
+"de58#14": {
+"cue": "countryside",
+"pick": "more crowded"
+},
+"de58#15": {
+"cue": "suddenly",
+"pick": "was walking"
+},
+"de58#16": {
+"cue": "___ my wallet",
+"pick": "lost"
+},
+"de58#17": {
+"cue": "enough",
+"pick": "= have"
+},
+"de58#18": {
+"cue": "decision",
+"pick": "= offer"
+},
+"de58#19": {
+"cue": "plans",
+"pick": "are you going"
+},
+"de58#20": {
+"cue": "week i ___",
+"pick": "don't"
+},
+"de58#21": {
+"cue": "times",
+"pick": "'ve heard"
+},
+"de58#22": {
+"cue": "nap",
+"pick": "could take"
+},
+"de59#1": {
+"cue": "has three members",
+"pick": "three people"
+},
+"de59#2": {
+"cue": "was reading ... when the lights went out",
+"pick": "while I was reading"
+},
+"de59#3": {
+"cue": "noisy while he played",
+"pick": "noisily"
+},
+"de59#4": {
+"cue": "Unless ... will fail",
+"pick": "will fail + if you don't"
+},
+"de59#5": {
+"cue": "quiet while they waited",
+"pick": "quietly"
+},
+"de59#6": {
+"cue": "the first time",
+"pick": "never visited"
+},
+"de59#7": {
+"cue": "because the traffic was bad",
+"pick": "the bad traffic"
+},
+"de59#8": {
+"cue": "tired, so I can't",
+"pick": "weren't"
+},
+"de59#9": {
+"cue": "most talented",
+"pick": "more + than"
+},
+"de59#10": {
+"cue": "meat",
+"pick": "doesn't"
+},
+"de59#11": {
+"cue": "started ... in 2010",
+"pick": "has worked + since"
+},
+"de59#12": {
+"cue": "talk to your teacher",
+"pick": "were you, I would"
+},
+"de59#13": {
+"cue": "doesn't ... as hard as",
+"pick": "harder than"
+},
+"de59#14": {
+"cue": "are you having ... tonight",
+"pick": "going to have"
+},
+"de59#15": {
+"cue": "because the rain was heavy",
+"pick": "heavy rain"
+},
+"de59#16": {
+"cue": "doesn't see ... very often",
+"pick": "hardly ever"
+},
+"de59#17": {
+"cue": "was sick, but",
+"pick": "was sick"
+},
+"de59#18": {
+"cue": "doesn't see ... very often",
+"pick": "hardly ever"
+},
+"de59#19": {
+"cue": "Russia is colder than Germany",
+"pick": "Germany isn't as cold"
+},
+"de59#20": {
+"cue": "and then I watched TV",
+"pick": "music. After that"
+},
+"de60#1": {
+"cue": "british",
+"pick": "most famous"
+},
+"de60#2": {
+"cue": "___ born",
+"pick": "was"
+},
+"de60#3": {
+"cue": "work ___",
+"pick": "is"
+},
+"de60#4": {
+"cue": "characters",
+"pick": "fun"
+},
+"de60#5": {
+"cue": "prejudice",
+"pick": "strangest"
+},
+"de60#6": {
+"cue": "unfortunately",
+"pick": "wasn't"
+},
+"de60#7": {
+"cue": "examples",
+"pick": "more traditional"
+},
+"de60#8": {
+"cue": "thompson ___",
+"pick": "received"
+},
+"de60#9": {
+"cue": "___ some problems",
+"pick": "were"
+},
+"de60#10": {
+"cue": "winslet",
+"pick": "were filming"
+},
+"de61#1": {
+"cue": "located",
+"pick": "new"
+},
+"de61#2": {
+"cue": "makes",
+"pick": "its unusually high tides"
+},
+"de61#3": {
+"cue": "activity",
+"pick": "skiing"
+},
+"de61#4": {
+"cue": "hopewell",
+"pick": "it broke in half"
+},
+"de61#5": {
+"cue": "interested",
+"pick": "in august"
+},
+"de62#1": {
+"cue": "part",
+"pick": "western"
+},
+"de62#2": {
+"cue": "surfboards",
+"pick": "80 km per hour"
+},
+"de62#3": {
+"cue": "surfing",
+"pick": "hike"
+},
+"de62#4": {
+"cue": "boards",
+"pick": "pulling"
+},
+"de62#5": {
+"cue": "jamie",
+"pick": "crashed"
+}
+}
