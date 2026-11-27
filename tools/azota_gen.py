@@ -13,16 +13,16 @@ def sent(text, num):
     t = re.sub(r"\((\d+)\)\s*_{2,}", lambda x: "_____" if x.group(1) == str(num) else f"({x.group(1)}) ___", text[a:b].strip())
     return re.sub(r"\s+", " ", t)
 out = {}
-for n in list(range(30, 42)) + [28, 24, 25, 26, 27, 20, 21, 22, 23]:
+for n in list(range(30, 42)) + [28, 24, 25, 26, 27, 20, 21, 22, 23] + list(range(57, 63)):
     d = json.load(open(f"{W}/data/exams/de{n}.json")); qs = d["questions"]; P = d.get("passages") or {}
     parts = [("1-25", [q for q in qs if int(q["num"]) <= 25]), ("26-36", [q for q in qs if int(q["num"]) > 25])] if n == 28 else [("all", qs)]
     for pk, ql in parts:
         L, sol = [], []
-        if 20 <= n <= 23:
+        if 20 <= n <= 23 or n in (61, 62):
             p = P.get("reading") or next(iter(P.values()), {}); pt = p.get("text", "") if isinstance(p, dict) else p
             L += ["Phần 1. Đọc đoạn văn rồi trả lời câu hỏi", re.sub(r"\n+", " ", pt).strip()]
         for i, q in enumerate(ql, 1):
-            t = sent(P["cloze"]["text"], int(q["num"])) if 24 <= n <= 27 else \
+            t = sent(P["cloze"]["text"], int(q["num"])) if (24 <= n <= 27 or n == 60) else \
                 ((q.get("prompt", "") + " ") if n == 28 else "") + (q.get("text") or q.get("stem_en") or "")
             L.append(f"Câu {i}. " + re.sub(r"\s+", " ", t).strip())
             L += [f"\t{'*' if 'ABCD'[j] == q['answer'] else ''}{'ABCD'[j]}. {o.strip()}" for j, o in enumerate(q["options"])]

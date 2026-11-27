@@ -16,15 +16,18 @@ SLOT = {0: ("Tối", 90), 1: ("Sáng", 120), 2: ("Chiều hoặc tối", 240), 3
         4: ("Cả ngày", 240), 5: ("Chiều và tối", 240), 6: ("Chiều và tối", 240)}
 FULL = {"2026-11-23", "2026-11-24"}
 TRIP = set()
-CAP = {}      # ngày bận: chỉ nhắc lại được khoảng chừng này câu
+CAP = {"2026-11-30": (280, 100, "Nhắc lại câu đến hạn tối đa 100 phút · làm câu Đề ôn sát đề và câu hay sai trước")}      # ngày bận: chỉ nhắc lại được khoảng chừng này câu
 NOTE = {**{f"2026-11-{d}": "Bận · nghỉ" for d in range(14, 26)},
-        "2026-11-26": "Bắt đầu · 2 giờ 15 – 5 giờ sáng · rồi đi học",
-        "2026-11-27": "Cả ngày · 4 buổi: 3–5h, 7–9h30, 13h30–15h30, tối 18h30–20h30 dò lại bài buổi sáng", "2026-11-28": "Học xong 240 câu · 4 buổi như Thứ 6 · tối dò lại bài buổi sáng",
-        "2026-11-29": "Sáng: Thi thử 4 + dò lại · tối 7–9 giờ 30: ôn vòng 2", "2026-11-30": "Sáng 3–5 giờ + tối: ôn vòng 2 · ngủ trước 22 giờ"}
+        "2026-11-26": "Đã học Unit 1 · Điền từ I và Unit 2 câu 1–20 dời sang Thứ 6",
+        "2026-11-27": "Học ĐỀ ÔN SÁT ĐỀ trước · 4 buổi: 10h–11h45, 13h15–15h30, 15h45–18h, 19h–21h",
+        "2026-11-28": "Học xong đề ôn sát đề · 4 buổi: 7h–9h30, 10h–12h, 14h–16h30, 19h–21h · tối dò lại bài buổi sáng",
+        "2026-11-29": "Học xong 240 câu · 4 buổi như Thứ 7 · tối ôn nhanh đề ôn sát đề",
+        "2026-11-30": "Chỉ 2 tiếng: nhắc lại + ôn nhanh đề ôn sát đề · ngủ trước 22 giờ"}
 AIH = "làm theo 4 bước"
 MIN = {}            # phút học mới mỗi bộ
 for n in range(30, 42): MIN[n] = 35   # có mẹo "Thấy → chọn" nên nhanh hơn
 MIN.update({24: 35, 25: 35, 26: 25, 27: 35, 20: 25, 21: 25, 22: 15, 23: 15})
+MIN.update({57: 25, 58: 25, 59: 40, 60: 15, 61: 12, 62: 12})   # Đề ôn sát đề (cô gửi 26/11)
 for n in range(42, 57): MIN[n] = 15
 
 def nm(n): return IDX[n]["name"]
@@ -38,7 +41,7 @@ def E(n, part="1-50", m=None, how=""):
         t = f"{nm(n)} · làm liền 60 phút như thi thật, rồi đọc giải thích câu sai"
         return ({"type": "exam", "ref": n, "mode": "new", "part": "1-50", "title": t, "minutes": 110}, "d", None, q)
     kind = "Luyện đọc" if n >= 42 else ""
-    t = f"{nm(n)} ({AIH})" if n < 42 else f"{nm(n)} (đọc kỹ, gạch chân chỗ có đáp án)"
+    t = f"{nm(n)} ({AIH})" if (n < 42 or n >= 57) else f"{nm(n)} (đọc kỹ, gạch chân chỗ có đáp án)"
     return ({"type": "exam", "ref": n, "mode": "new", "part": part, "title": t, "minutes": m or MIN[n]}, "d", None, q)
 def RL(n, part="1-50", m=None, why="dò lại bài hôm trước"):
     if n == 28:
@@ -55,19 +58,20 @@ def SELF(m, t, kind="o"):
 REC = "RECALL"
 U = lambda u, h: 30 + (u - 1) * 2 + h      # Unit u, nửa h (0: câu 1–20, 1: câu 21–40)
 V2 = "ôn vòng 2"
+TV = "buổi tối dò lại bài buổi sáng"
 P = {
 **{f"2026-11-{d}": [] for d in range(14, 26)},
-"2026-11-26": [E(U(1, 0)), E(U(1, 1)), E(24), E(U(2, 0))],
-"2026-11-27": [REC, RL(U(1, 0)), RL(U(1, 1)), RL(24), RL(U(2, 0)),
-               E(U(2, 1)), E(U(3, 0)), E(28, "1-25"), E(U(3, 1)), E(U(4, 0)), E(25), E(U(4, 1)), E(22), E(U(5, 0)),
-               RL(U(2, 1), why="buổi tối dò lại bài buổi sáng"), RL(U(3, 0), why="buổi tối dò lại bài buổi sáng"), RL(U(3, 1), why="buổi tối dò lại bài buổi sáng")],
-"2026-11-28": [REC, RL(U(2, 1)), RL(U(3, 0)), RL(28, "1-25"), RL(U(3, 1)), RL(U(4, 0)), RL(25), RL(U(4, 1)), RL(22), RL(U(5, 0)),
-               E(U(5, 1)), E(26), E(28, "26-50"), E(U(6, 0)), E(U(6, 1)), E(27), E(23),
-               RL(U(5, 1), why="buổi tối dò lại bài buổi sáng"), RL(U(6, 0), why="buổi tối dò lại bài buổi sáng"), RL(28, "26-50", why="buổi tối dò lại bài buổi sáng")],
-"2026-11-29": [REC, E(19), RL(U(5, 1)), RL(26), RL(28, "26-50"), RL(U(6, 0)), RL(U(6, 1)), RL(27), RL(23),
-               RL(U(1, 0), why=V2), RL(U(1, 1), why=V2), RL(U(2, 0), why=V2), RL(U(2, 1), why=V2), E(21), E(20)],
-"2026-11-30": [REC, RL(28, "1-50", why=V2), RL(U(3, 0), why=V2), RL(U(3, 1), why=V2), RL(U(4, 0), why=V2), RL(U(4, 1), why=V2),
-               SW("extra", "Ôn trọn bài ôn của cô (biến đổi câu, điền từ · đảo đáp án) · làm câu chưa thuộc trước", 30)],
+"2026-11-26": [E(U(1, 0)), E(U(1, 1))],
+"2026-11-27": [REC, RL(U(1, 0)), RL(U(1, 1)), E(57), E(58), E(U(2, 0)), E(U(2, 1)), E(59), E(24), E(U(3, 0)), E(60), E(U(3, 1)), E(22),
+               RL(57, why=TV), RL(58, why=TV), RL(U(2, 0), why=TV), RL(U(2, 1), why=TV)],
+"2026-11-28": [REC, RL(57), RL(58), RL(U(2, 0)), RL(U(2, 1)), RL(59), RL(24), RL(U(3, 0)), RL(60), RL(U(3, 1)), RL(22),
+               E(U(4, 0)), E(28, "1-25"), E(U(4, 1)), E(25), E(61), E(62), E(U(5, 0)), E(27), E(23), E(21),
+               RL(U(4, 0), why=TV), RL(U(4, 1), why=TV), RL(U(5, 0), why=TV)],
+"2026-11-29": [REC, RL(U(4, 0)), RL(U(4, 1)), RL(28, "1-25"), RL(25), RL(61), RL(62), RL(U(5, 0)), RL(27), RL(23), RL(21),
+               E(U(5, 1)), E(28, "26-50"), E(U(6, 0)), E(26), E(U(6, 1)), E(20),
+               RL(U(5, 1), why=TV), RL(U(6, 0), why=TV), RL(U(6, 1), why=TV),
+               SW("handout", "Tối: ôn nhanh cả Đề ôn sát đề của cô (đảo đáp án) · chỗ nào sai đọc lại mẹo", 30)],
+"2026-11-30": [REC, SW("handout", "Ôn nhanh Đề ôn sát đề của cô lần cuối (đảo đáp án) · chỗ nào sai đọc lại mẹo", 20)],
 }
 
 GAPS = [1, 3, 6, 12, 20]; KG = [1, 2, 4]
@@ -78,7 +82,7 @@ def sim(seed):
         iso = d.isoformat()
         todo = [it for it in items if it["due"] <= iso]
         if iso in TRIP: todo = todo[:40]
-        if iso in CAP: todo = todo[:CAP[iso]]
+        if iso in CAP: todo = todo[:CAP[iso][0]]
         load[iso] = len(todo)
         def upd(it, ok):
             it["box"] = min(it["box"] + 1, 4) if ok else 0
@@ -90,7 +94,7 @@ def sim(seed):
         for it in todo: upd(it, rnd.random() < (0.7 if it["box"] <= 0 else 0.85))
         for x in P.get(iso, []):
             if x != REC and x[0]["type"] == "exam" and x[0]["ref"] not in (16, 19):
-                key = 30 <= x[0]["ref"] <= 41 or x[0]["ref"] == 28
+                key = 30 <= x[0]["ref"] <= 41 or x[0]["ref"] == 28 or 57 <= x[0]["ref"] <= 62
                 for _ in range(x[3]):
                     it = {"box": 0, "st": 0, "key": key, "ref": x[0]["ref"]}
                     upd(it, rnd.random() < 0.6); items.append(it)
@@ -109,9 +113,10 @@ while d <= date(2026, 12, 1):
     if iso in FULL: slot, bud = "Cả ngày (trường cho nghỉ)", 360
     if iso in TRIP: slot, bud = "Đi Đà Lạt", 30
     BUDO = {**{f"2026-11-{d}": ("Bận", 0) for d in range(14, 26)},
-            "2026-11-26": ("2 giờ 15 – 5 giờ sáng · sau đó đi học", 150), "2026-11-27": ("3 giờ sáng – 9 giờ tối · chia 4 buổi", 420),
-            "2026-11-28": ("3 giờ sáng – 9 giờ tối · chia 4 buổi", 420), "2026-11-29": ("3–10 giờ sáng · tối 7–9 giờ 30", 400),
-            "2026-11-30": ("3–5 giờ sáng · tối 7–9 giờ 30", 220)}
+            "2026-11-26": ("2 giờ 15 – 5 giờ sáng · sau đó đi học", 150),
+            "2026-11-27": ("10 giờ sáng – 9 giờ tối (đã trừ ăn, nghỉ, giải lao)", 400),
+            "2026-11-28": ("7 giờ sáng – 9 giờ tối (đã trừ ăn, nghỉ, giải lao)", 460), "2026-11-29": ("7 giờ sáng – 9 giờ tối (đã trừ ăn, nghỉ, giải lao)", 460),
+            "2026-11-30": ("Rảnh 2 tiếng · chỉ ôn, không học bài mới", 120)}
     if iso in BUDO: slot, bud = BUDO[iso]
     day = {"date": iso, "wd": WD[d.weekday()], "label": dlabel(d), "slot": slot, "budget": bud, "tasks": [], "new_words": []}
     if iso < "2026-11-14":
@@ -119,7 +124,7 @@ while d <= date(2026, 12, 1):
     elif iso == "2026-12-01":
         day.update(slot="Sáng ôn nhẹ · chiều thi", budget=120)
         day["tasks"] = [{"type": "recall", "title": "Sáng: nhắc lại câu đến hạn, tối đa 30 phút (không học câu mới)", "minutes": 30, "id_n": 200},
-                        {"type": "self", "title": "Sáng: đọc lại ghi chú các câu còn hay sai, viết ra giấy điều đang lo 10 phút", "minutes": 25, "id_n": 201},
+                        {"type": "self", "title": "Sáng: lướt lại Đề ôn sát đề của cô (câu hay sai) + đọc ghi chú, viết ra giấy điều đang lo 10 phút", "minutes": 25, "id_n": 201},
                         {"type": "exam_day", "title": "CHIỀU THI. Nghỉ ngơi, ăn trưa no, đến sớm. Làm câu dễ trước, không bỏ trống câu nào.", "minutes": 5, "id_n": 202}]
         html.append([iso, 120, [[t["minutes"], "s" if t["type"] == "recall" else "o", t["title"]] for t in day["tasks"]], "Sáng ôn nhẹ · chiều thi"])
     else:
@@ -134,7 +139,7 @@ while d <= date(2026, 12, 1):
                 if iso in TRIP:
                     task = {"type": "recall", "title": f"Nhắc lại trên điện thoại ~20 phút nếu tiện (không bắt buộc). Khoảng {n} câu đến hạn, làm được bao nhiêu thì làm.", "minutes": 20}
                 elif iso in CAP:
-                    task = {"type": "recall", "title": "Tối: nhắc lại câu đến hạn tối đa 30 phút (làm câu nào được câu đó, còn lại để mai)", "minutes": 30}
+                    task = {"type": "recall", "title": CAP[iso][2], "minutes": CAP[iso][1]}
                 elif n == 0:
                     task = {"type": "recall", "title": "Nhắc lại câu đến hạn (nếu có)", "minutes": 10}
                 else:

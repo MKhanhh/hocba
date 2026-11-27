@@ -14,7 +14,7 @@ for d in S:
         ids.add(k)
         if t["type"] in ("exam", "relearn") and t.get("ref") not in IDX: err.append(f"{d['date']}: bộ {t.get('ref')} không có")
 learn = collections.Counter((t.get("ref"), t.get("part")) for d in S for t in d["tasks"] if t["type"] == "exam" and d["date"] >= "2026-11-14")
-need = [(n, "1-50") for n in list(range(30, 42)) + list(range(20, 28)) + [19]] + [(28, "1-25"), (28, "26-50")]
+need = [(n, "1-50") for n in list(range(30, 42)) + list(range(20, 28)) + list(range(57, 63))] + [(28, "1-25"), (28, "26-50")]
 miss = [k for k in need if k not in learn]
 if miss: err.append(f"thiếu bài học mới: {miss}")
 dup = [k for k, v in learn.items() if v > 1]
