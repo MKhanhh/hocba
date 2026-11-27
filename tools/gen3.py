@@ -19,8 +19,8 @@ TRIP = set()
 CAP = {"2026-11-30": (280, 100, "Nhắc lại câu đến hạn tối đa 100 phút · làm câu Đề ôn sát đề và câu hay sai trước")}      # ngày bận: chỉ nhắc lại được khoảng chừng này câu
 NOTE = {**{f"2026-11-{d}": "Bận · nghỉ" for d in range(14, 26)},
         "2026-11-26": "Đã học Unit 1 · Điền từ I và Unit 2 câu 1–20 dời sang Thứ 6",
-        "2026-11-27": "Học ĐỀ ÔN SÁT ĐỀ trước · 4 buổi: 10h–11h45, 13h15–15h30, 15h45–18h, 19h–21h",
-        "2026-11-28": "Học xong đề ôn sát đề · 4 buổi: 7h–9h30, 10h–12h, 14h–16h30, 19h–21h · tối dò lại bài buổi sáng",
+        "2026-11-27": "Học ĐỀ ÔN SÁT ĐỀ trước · Unit 3 câu 21–40 + Đọc 2 dời sang Thứ 7",
+        "2026-11-28": "Sáng học bù Unit 3 câu 21–40 + Đọc 2 (dời từ Thứ 6) · 4 buổi: 7h–9h30, 10h–12h, 14h–16h30, 19h–21h",
         "2026-11-29": "Học xong 240 câu · 4 buổi như Thứ 7 · tối ôn nhanh đề ôn sát đề",
         "2026-11-30": "Chỉ 2 tiếng: nhắc lại + ôn nhanh đề ôn sát đề · ngủ trước 22 giờ"}
 AIH = "làm theo 4 bước"
@@ -35,7 +35,8 @@ def E(n, part="1-50", m=None, how=""):
     if n == 28:
         q = 25 if part == "1-25" else 11
         t = f"Biến đổi câu của cô · câu {'1–25' if part == '1-25' else '26–36'} ({AIH})"
-        return ({"type": "exam", "ref": 28, "mode": "new", "part": part, "title": t, "minutes": 60 if part == "1-25" else 30}, "d", None, q)
+        # câu 1–25: 10 câu đã học trong Đề ôn sát đề · 3. Biến đổi câu (27/11) → chỉ còn 15 câu mới, 45 phút là đủ
+        return ({"type": "exam", "ref": 28, "mode": "new", "part": part, "title": t, "minutes": 45 if part == "1-25" else 30}, "d", None, q)
     q = IDX[n]["count"]
     if n in (16, 19):
         t = f"{nm(n)} · làm liền 60 phút như thi thật, rồi đọc giải thích câu sai"
@@ -56,18 +57,20 @@ def SW(ref, t, m):
 def SELF(m, t, kind="o"):
     return ({"type": "self", "title": t, "minutes": m}, kind, None, 0)
 REC = "RECALL"
+SKIP = "SKIP"      # việc đã dời sang ngày khác: giữ chỗ để mã (id_n) các việc đã xong trong ngày không đổi
 U = lambda u, h: 30 + (u - 1) * 2 + h      # Unit u, nửa h (0: câu 1–20, 1: câu 21–40)
 V2 = "ôn vòng 2"
 TV = "buổi tối dò lại bài buổi sáng"
 P = {
 **{f"2026-11-{d}": [] for d in range(14, 26)},
 "2026-11-26": [E(U(1, 0)), E(U(1, 1))],
-"2026-11-27": [REC, RL(U(1, 0)), RL(U(1, 1)), E(57), E(58), E(U(2, 0)), E(U(2, 1)), E(59), E(24), E(U(3, 0)), E(60), E(U(3, 1)), E(22),
-               RL(57, why=TV), RL(58, why=TV), RL(U(2, 0), why=TV), RL(U(2, 1), why=TV)],
-"2026-11-28": [REC, RL(57), RL(58), RL(U(2, 0)), RL(U(2, 1)), RL(59), RL(24), RL(U(3, 0)), RL(60), RL(U(3, 1)), RL(22),
-               E(U(4, 0)), E(28, "1-25"), E(U(4, 1)), E(25), E(61), E(62), E(U(5, 0)), E(27), E(23), E(21),
-               RL(U(4, 0), why=TV), RL(U(4, 1), why=TV), RL(U(5, 0), why=TV)],
-"2026-11-29": [REC, RL(U(4, 0)), RL(U(4, 1)), RL(28, "1-25"), RL(25), RL(61), RL(62), RL(U(5, 0)), RL(27), RL(23), RL(21),
+# 27/11: chưa làm Unit 3 câu 21–40, Đọc 2 và dò lại tối Từ vựng → dời sang 28/11 (dò Từ vựng: đã có RL(57) sáng 28)
+"2026-11-27": [REC, RL(U(1, 0)), RL(U(1, 1)), E(57), E(58), E(U(2, 0)), E(U(2, 1)), E(59), E(24), E(U(3, 0)), E(60), SKIP, SKIP,
+               SKIP, RL(58, why=TV), RL(U(2, 0), why=TV), RL(U(2, 1), why=TV)],
+"2026-11-28": [REC, RL(57), RL(58), RL(U(2, 0)), RL(U(2, 1)), RL(59), RL(24), RL(U(3, 0)), RL(60), E(U(3, 1)), E(22),
+               E(U(4, 0)), E(28, "1-25"), E(U(4, 1)), E(25), E(61), E(62), E(U(5, 0)), E(27), E(23), E(21, m=20),
+               RL(U(4, 0), why=TV), RL(U(4, 1), why=TV)],     # Unit 5 câu 1–20 học chiều muộn → dò lại sáng 29 (bớt 1 việc tối để vừa giờ)
+"2026-11-29": [REC, RL(U(3, 1)), RL(22), RL(U(4, 0)), RL(U(4, 1)), RL(28, "1-25"), RL(25), RL(61), RL(62), RL(U(5, 0)), RL(27), RL(23), RL(21),
                E(U(5, 1)), E(28, "26-50"), E(U(6, 0)), E(26), E(U(6, 1)), E(20),
                RL(U(5, 1), why=TV), RL(U(6, 0), why=TV), RL(U(6, 1), why=TV),
                SW("handout", "Tối: ôn nhanh cả Đề ôn sát đề của cô (đảo đáp án) · chỗ nào sai đọc lại mẹo", 30)],
@@ -93,7 +96,7 @@ def sim(seed):
                     it["due"] = min(d + timedelta(days=KG[it["st"]] if ok else 1), max(d + timedelta(days=1), date(2026, 11, 29))).isoformat()
         for it in todo: upd(it, rnd.random() < (0.7 if it["box"] <= 0 else 0.85))
         for x in P.get(iso, []):
-            if x != REC and x[0]["type"] == "exam" and x[0]["ref"] not in (16, 19):
+            if x not in (REC, SKIP) and x[0]["type"] == "exam" and x[0]["ref"] not in (16, 19):
                 key = 30 <= x[0]["ref"] <= 41 or x[0]["ref"] == 28 or 57 <= x[0]["ref"] <= 62
                 for _ in range(x[3]):
                     it = {"box": 0, "st": 0, "key": key, "ref": x[0]["ref"]}
@@ -130,10 +133,12 @@ while d <= date(2026, 12, 1):
     else:
         rows = []
         seq = list(P[iso])
-        if any(x != REC and x[0]["type"] == "exam" for x in seq):
-            k = next((i for i, x in enumerate(seq) if x != REC and x[0]["type"] == "exam"), 0)
+        if any(x not in (REC, SKIP) and x[0]["type"] == "exam" for x in seq):
+            k = next((i for i, x in enumerate(seq) if x not in (REC, SKIP) and x[0]["type"] == "exam"), 0)
             seq.insert(k, "GUIDE")
         for i, it in enumerate(seq):
+            if it == SKIP:
+                continue
             if it == REC:
                 n = int(round(LOAD[iso])); m = max(10, int(round(n * 0.35 / 5.0) * 5))
                 if iso in TRIP:
