@@ -20,8 +20,8 @@ CAP = {"2026-11-30": (280, 100, "Nhắc lại câu đến hạn tối đa 100 ph
 NOTE = {**{f"2026-11-{d}": "Bận · nghỉ" for d in range(14, 26)},
         "2026-11-26": "Đã học Unit 1 · Điền từ I và Unit 2 câu 1–20 dời sang Thứ 6",
         "2026-11-27": "Học ĐỀ ÔN SÁT ĐỀ trước · Unit 3 câu 21–40 + Đọc 2 dời sang Thứ 7",
-        "2026-11-28": "Sáng học bù Unit 3 câu 21–40 + Đọc 2 (dời từ Thứ 6) · 4 buổi: 7h–9h30, 10h–12h, 14h–16h30, 19h–21h",
-        "2026-11-29": "Học xong 240 câu · 4 buổi như Thứ 7 · tối ôn nhanh đề ôn sát đề",
+        "2026-11-28": "Học được Unit 3 câu 21–40, Đọc 2, Unit 4 câu 1–20 · 9 bài còn lại dời sang Chủ nhật",
+        "2026-11-29": "Học bù 9 bài của Thứ 7 + học xong hết · dậy 2h · 4 buổi: 2h–5h30, 7h–11h, 12h30–16h, 18h–21h · ngủ trưa 1 tiếng",
         "2026-11-30": "Chỉ 2 tiếng: nhắc lại + ôn nhanh đề ôn sát đề · ngủ trước 22 giờ"}
 AIH = "làm theo 4 bước"
 MIN = {}            # phút học mới mỗi bộ
@@ -61,18 +61,28 @@ SKIP = "SKIP"      # việc đã dời sang ngày khác: giữ chỗ để mã (
 U = lambda u, h: 30 + (u - 1) * 2 + h      # Unit u, nửa h (0: câu 1–20, 1: câu 21–40)
 V2 = "ôn vòng 2"
 TV = "buổi tối dò lại bài buổi sáng"
+BT = "dò lại bài buổi trước"
 P = {
 **{f"2026-11-{d}": [] for d in range(14, 26)},
 "2026-11-26": [E(U(1, 0)), E(U(1, 1))],
 # 27/11: chưa làm Unit 3 câu 21–40, Đọc 2 và dò lại tối Từ vựng → dời sang 28/11 (dò Từ vựng: đã có RL(57) sáng 28)
 "2026-11-27": [REC, RL(U(1, 0)), RL(U(1, 1)), E(57), E(58), E(U(2, 0)), E(U(2, 1)), E(59), E(24), E(U(3, 0)), E(60), SKIP, SKIP,
                SKIP, RL(58, why=TV), RL(U(2, 0), why=TV), RL(U(2, 1), why=TV)],
+# 28/11: còn 10 việc chưa làm → dời hết sang CN 29/11 (bạn dậy 2h, học 4 buổi ~11 tiếng). SKIP giữ mã các việc đã xong.
 "2026-11-28": [REC, RL(57), RL(58), RL(U(2, 0)), RL(U(2, 1)), RL(59), RL(24), RL(U(3, 0)), RL(60), E(U(3, 1)), E(22),
-               E(U(4, 0)), E(28, "1-25"), E(U(4, 1)), E(25), E(61), E(62), E(U(5, 0)), E(27), E(23), E(21, m=20),
-               RL(U(4, 0), why=TV), RL(U(4, 1), why=TV)],     # Unit 5 câu 1–20 học chiều muộn → dò lại sáng 29 (bớt 1 việc tối để vừa giờ)
-"2026-11-29": [REC, RL(U(3, 1)), RL(22), RL(U(4, 0)), RL(U(4, 1)), RL(28, "1-25"), RL(25), RL(61), RL(62), RL(U(5, 0)), RL(27), RL(23), RL(21),
-               E(U(5, 1)), E(28, "26-50"), E(U(6, 0)), E(26), E(U(6, 1)), E(20),
-               RL(U(5, 1), why=TV), RL(U(6, 0), why=TV), RL(U(6, 1), why=TV),
+               E(U(4, 0)), SKIP, SKIP, SKIP, SKIP, SKIP, SKIP, SKIP, SKIP, SKIP,
+               RL(U(4, 0), why=TV), SKIP],
+"2026-11-29": [REC,
+               # Buổi 1 · 2h–5h30: dò lại bài hôm qua → Đề ôn sát đề (2 bài đọc) → Biến đổi câu → Unit 4, 5
+               RL(U(3, 1)), RL(22), RL(U(4, 0)),
+               E(61), E(62), E(28, "1-25"), E(U(4, 1)), E(U(5, 0)),
+               # Buổi 2 · 7h–11h
+               E(25), E(U(5, 1)), E(28, "26-50"), E(27), E(U(6, 0)), E(23),
+               # Buổi 3 · 12h30–16h: dò lại bài buổi 1 trước, rồi học tiếp
+               RL(61, why=BT), RL(62, why=BT), RL(28, "1-25", why=BT), RL(U(4, 1), why=BT), RL(U(5, 0), why=BT),
+               E(26), E(U(6, 1)), E(21, m=20), E(20, m=20),
+               # Buổi 4 · 18h–21h: dò lại bài buổi 2–3 + ôn nhanh cả Đề ôn sát đề
+               RL(25, why=BT), RL(U(5, 1), why=BT), RL(28, "26-50", why=BT), RL(27, why=BT), RL(U(6, 0), why=BT), RL(U(6, 1), why=BT),
                SW("handout", "Tối: ôn nhanh cả Đề ôn sát đề của cô (đảo đáp án) · chỗ nào sai đọc lại mẹo", 30)],
 "2026-11-30": [REC, SW("handout", "Ôn nhanh Đề ôn sát đề của cô lần cuối (đảo đáp án) · chỗ nào sai đọc lại mẹo", 20)],
 }
@@ -118,7 +128,7 @@ while d <= date(2026, 12, 1):
     BUDO = {**{f"2026-11-{d}": ("Bận", 0) for d in range(14, 26)},
             "2026-11-26": ("2 giờ 15 – 5 giờ sáng · sau đó đi học", 150),
             "2026-11-27": ("10 giờ sáng – 9 giờ tối (đã trừ ăn, nghỉ, giải lao)", 400),
-            "2026-11-28": ("7 giờ sáng – 9 giờ tối (đã trừ ăn, nghỉ, giải lao)", 460), "2026-11-29": ("7 giờ sáng – 9 giờ tối (đã trừ ăn, nghỉ, giải lao)", 460),
+            "2026-11-28": ("7 giờ sáng – 9 giờ tối (đã trừ ăn, nghỉ, giải lao)", 460), "2026-11-29": ("2h–5h30 · 7h–11h · 12h30–16h · 18h–21h (đã trừ nghỉ giữa giờ)", 660),
             "2026-11-30": ("Rảnh 2 tiếng · chỉ ôn, không học bài mới", 120)}
     if iso in BUDO: slot, bud = BUDO[iso]
     day = {"date": iso, "wd": WD[d.weekday()], "label": dlabel(d), "slot": slot, "budget": bud, "tasks": [], "new_words": []}
